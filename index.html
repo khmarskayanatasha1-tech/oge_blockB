@@ -1,0 +1,1873 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Тема Б. Внешность и характер человека</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, sans-serif; }
+  body {
+    background: linear-gradient(135deg, #00b894 0%, #26de81 50%, #20bf6b 100%);
+    min-height: 100vh;
+    padding: 20px;
+    position: relative;
+    overflow-x: hidden;
+  }
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(255,255,255,0.15) 0%, transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(255,255,255,0.12) 0%, transparent 40%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Cpath d='M0 100 Q 50 50 100 100 T 200 100' stroke='rgba(255,255,255,0.15)' stroke-width='2' fill='none'/%3E%3Cpath d='M0 150 Q 50 100 100 150 T 200 150' stroke='rgba(255,255,255,0.1)' stroke-width='2' fill='none'/%3E%3Cpath d='M0 50 Q 50 0 100 50 T 200 50' stroke='rgba(255,255,255,0.1)' stroke-width='2' fill='none'/%3E%3C/svg%3E");
+    background-size: 400px 400px;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.5;
+  }
+  .container { max-width: 1200px; margin: 0 auto; background: #fff; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.3); position: relative; z-index: 1; }
+  header { background: linear-gradient(135deg, #00b894 0%, #55efc4 50%, #26de81 100%); padding: 35px 20px; text-align: center; color: #fff; position: relative; }
+  header h1 { font-size: 2em; margin-bottom: 10px; text-shadow: 2px 2px 6px rgba(0,0,0,0.25); }
+  header p { opacity: 0.98; font-size: 1.05em; }
+  .tabs { display: flex; flex-wrap: wrap; background: #f0fff9; border-bottom: 3px solid #26de81; }
+  .tab { flex: 1; min-width: 100px; padding: 14px 8px; text-align: center; cursor: pointer; font-weight: 700; color: #1e7a4c; transition: all 0.3s; border-bottom: 4px solid transparent; font-size: 0.85em; }
+  .tab:hover { background: #dcfff0; }
+  .tab.active { background: linear-gradient(135deg, #26de81, #20bf6b); color: #fff; border-bottom-color: #fdcb6e; border-radius: 8px 8px 0 0; }
+  .tab-content { display: none; padding: 30px; animation: fadeIn 0.4s; }
+  .tab-content.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+  .section { background: linear-gradient(135deg, #f0fff9, #e6fff7); border-radius: 15px; padding: 25px; margin-bottom: 25px; border-left: 6px solid #26de81; box-shadow: 0 4px 15px rgba(38, 222, 129, 0.15); }
+  .section h2 { color: #1e7a4c; margin-bottom: 15px; font-size: 1.5em; display: flex; align-items: center; gap: 10px; }
+  .section h3 { color: #20bf6b; margin: 15px 0 10px; font-size: 1.2em; }
+  .section p, .section li { color: #2d3436; line-height: 1.6; }
+  .word-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 10px; margin-top: 15px; }
+  .word-card { background: #fff; padding: 10px 15px; border-radius: 10px; border-left: 4px solid #26de81; box-shadow: 0 2px 8px rgba(38, 222, 129, 0.15); transition: transform 0.2s; }
+  .word-card:hover { transform: translateX(5px); }
+  .word-card .en { font-weight: 700; color: #1e7a4c; }
+  .word-card .ru { color: #666; font-size: 0.9em; }
+  .quizlet-btn { display: inline-block; margin-top: 15px; padding: 12px 25px; background: linear-gradient(135deg, #26de81, #00b894); color: #fff; text-decoration: none; border-radius: 30px; font-weight: 700; box-shadow: 0 4px 15px rgba(38, 222, 129, 0.4); transition: transform 0.2s; }
+  .quizlet-btn:hover { transform: scale(1.05); }
+  .media-block { margin: 15px 0; padding: 12px; background: #fff; border-radius: 12px; box-shadow: 0 3px 10px rgba(0,0,0,0.08); border-left: 4px solid #26de81; }
+  .media-block .media-label { font-weight: 700; color: #1e7a4c; margin-bottom: 8px; font-size: 0.95em; }
+  .media-block iframe { width: 100%; border: none; border-radius: 8px; background: #f0fff9; }
+  .media-block.audio iframe { height: 80px; }
+  .media-block.video iframe { height: 380px; }
+  .reading-text { background: #fffef5; padding: 20px; border-radius: 12px; font-size: 1.05em; line-height: 1.8; cursor: text; user-select: text; position: relative; }
+  .reading-text p { margin-bottom: 12px; position: relative; padding-left: 30px; }
+  .reading-text p::before { content: attr(data-num); position: absolute; left: 0; top: 0; background: linear-gradient(135deg, #26de81, #20bf6b); color: #fff; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75em; font-weight: 700; }
+  .reading-text .word { cursor: pointer; padding: 0 1px; border-radius: 3px; transition: background 0.15s; }
+  .reading-text .word:hover { background: #e6fff7; }
+  .reading-text .word.hl-yellow { background: #ffe066; }
+  .reading-text .word.hl-green { background: #b2f2bb; }
+  .reading-text .word.hl-pink { background: #ffc9de; }
+  .reading-text .word.hl-blue { background: #a5d8ff; }
+  .highlight-tools { display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; align-items: center; }
+  .hl-btn { width: 30px; height: 30px; border-radius: 50%; border: 2px solid #fff; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.15); transition: transform 0.2s; }
+  .hl-btn:hover { transform: scale(1.15); }
+  .hl-btn.y { background: #ffe066; }
+  .hl-btn.g { background: #b2f2bb; }
+  .hl-btn.p { background: #ffc9de; }
+  .hl-btn.b { background: #a5d8ff; }
+  .headings-bank { display: flex; flex-wrap: wrap; gap: 10px; padding: 15px; background: linear-gradient(135deg, #e6fff7, #d4ffee); border-radius: 12px; margin: 15px 0; border: 2px dashed #26de81; min-height: 60px; }
+  .heading-chip { background: linear-gradient(135deg, #26de81, #00b894); color: #fff; padding: 8px 15px; border-radius: 20px; cursor: grab; font-size: 0.9em; font-weight: 600; box-shadow: 0 3px 10px rgba(38,222,129,0.3); transition: transform 0.2s; user-select: none; }
+  .heading-chip:active { cursor: grabbing; transform: scale(0.95); }
+  .heading-chip.dragging { opacity: 0.5; }
+  .drop-zone { display: inline-block; min-width: 150px; padding: 6px 12px; margin-left: 8px; border: 2px dashed #26de81; border-radius: 8px; background: #f0fff9; font-size: 0.85em; color: #999; text-align: center; transition: all 0.2s; vertical-align: middle; }
+  .drop-zone.over { background: #d4ffee; border-color: #00b894; transform: scale(1.05); }
+  .drop-zone.filled { background: linear-gradient(135deg, #e6fff7, #d4ffee); border-style: solid; border-color: #00b894; color: #b8d8c8; font-style: italic; opacity: 0.55; font-weight: 600; }
+  .tfns-item { background: #fff; padding: 15px; border-radius: 10px; margin-bottom: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .tfns-options { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+  .tfns-btn { padding: 8px 18px; border: 2px solid #26de81; background: #fff; color: #1e7a4c; border-radius: 20px; cursor: pointer; font-weight: 700; transition: all 0.2s; }
+  .tfns-btn:hover { background: #e6fff7; }
+  .tfns-btn.selected { background: linear-gradient(135deg, #26de81, #20bf6b); color: #fff; border-color: #20bf6b; }
+  .match-item { display: flex; align-items: center; gap: 12px; background: #fff; padding: 12px 15px; border-radius: 10px; margin-bottom: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .match-item label { font-weight: 700; color: #1e7a4c; min-width: 110px; }
+  .match-item select { flex: 1; padding: 8px 12px; border: 2px solid #26de81; border-radius: 8px; font-size: 1em; background: #fff; cursor: pointer; }
+  .question-list { list-style: none; padding-left: 0; }
+  .question-list li { display: flex; align-items: flex-start; gap: 10px; padding: 10px 12px; margin-bottom: 8px; background: #fff; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); line-height: 1.5; color: #2d3436; transition: background 0.2s; }
+  .question-list li.done { background: linear-gradient(135deg, #e0ffe0, #f0fff5); text-decoration: line-through; color: #4a7a4a; }
+  .qmark { font-size: 1.3em; cursor: pointer; user-select: none; transition: transform 0.2s; flex-shrink: 0; line-height: 1.2; }
+  .qmark:hover { transform: scale(1.2); }
+  .fill-input { padding: 8px 12px; border: 2px solid #26de81; border-radius: 8px; font-size: 1em; background: #f0fff9; outline: none; min-width: 120px; font-weight: 600; color: #1e7a4c; transition: all 0.2s; }
+  .fill-input:focus { background: #fff; box-shadow: 0 0 0 3px rgba(38, 222, 129, 0.2); }
+  .exercise-item { background: #fff; padding: 15px; border-radius: 10px; margin-bottom: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); line-height: 2; }
+  .mc-btn { display: inline-block; padding: 6px 14px; margin: 0 4px; border: 2px solid #26de81; background: #fff; color: #1e7a4c; border-radius: 15px; cursor: pointer; font-weight: 600; transition: all 0.2s; }
+  .mc-btn:hover { background: #e6fff7; }
+  .mc-btn.selected { background: linear-gradient(135deg, #26de81, #20bf6b); color: #fff; }
+  .grammar-nav { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; padding: 15px; background: linear-gradient(135deg, #d4ffee, #e6fff7); border-radius: 12px; }
+  .grammar-nav button { padding: 8px 15px; background: #fff; border: 2px solid #26de81; color: #1e7a4c; border-radius: 20px; cursor: pointer; font-weight: 700; font-size: 0.85em; transition: all 0.2s; }
+  .grammar-nav button:hover { background: #e6fff7; }
+  .grammar-nav button.active { background: linear-gradient(135deg, #26de81, #20bf6b); color: #fff; }
+  .grammar-rule { display: none; }
+  .grammar-rule.active { display: block; }
+  .rule-block { background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(38, 222, 129, 0.15); border-top: 5px solid #26de81; }
+  .rule-block .rule { background: linear-gradient(135deg, #fff9e6, #e6fff7); padding: 15px; border-radius: 10px; border-left: 5px solid #fdcb6e; margin-bottom: 15px; }
+  .example { background: #f0fff9; padding: 10px 15px; border-radius: 8px; margin-bottom: 8px; border-left: 4px solid #26de81; }
+  .example .en { font-weight: 700; color: #1e7a4c; }
+  .example .ru { color: #666; font-size: 0.92em; }
+  .sub-tabs { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
+  .sub-tab { padding: 10px 20px; background: #fff; border: 2px solid #26de81; color: #1e7a4c; border-radius: 25px; cursor: pointer; font-weight: 700; transition: all 0.2s; }
+  .sub-tab.active { background: linear-gradient(135deg, #26de81, #20bf6b); color: #fff; }
+  .sub-content { display: none; }
+  .sub-content.active { display: block; animation: fadeIn 0.4s; }
+  .role-card { background: #fff; border-radius: 15px; padding: 20px; margin-bottom: 15px; box-shadow: 0 4px 15px rgba(38, 222, 129, 0.2); border-top: 6px solid #26de81; }
+  .role-card h4 { color: #00b894; margin-bottom: 10px; font-size: 1.1em; }
+  .role-card ul { list-style: none; padding-left: 0; }
+  .role-card ul li { padding: 6px 0; padding-left: 25px; position: relative; font-style: italic; color: #1e7a4c; }
+  .role-card ul li::before { content: '💬'; position: absolute; left: 0; }
+  .wheel-container { display: flex; align-items: center; justify-content: center; gap: 30px; flex-wrap: wrap; margin: 20px 0; }
+  .wheel-wrapper { position: relative; width: 420px; height: 420px; flex-shrink: 0; }
+  .wheel-svg { width: 100%; height: 100%; transition: transform 4s cubic-bezier(0.17, 0.67, 0.12, 0.99); }
+  .wheel-pointer { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); width: 0; height: 0; border-left: 20px solid transparent; border-right: 20px solid transparent; border-top: 40px solid #00b894; z-index: 10; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3)); }
+  .spin-btn { display: block; margin: 0 auto; padding: 15px 50px; background: linear-gradient(135deg, #26de81, #00b894); color: #fff; border: none; border-radius: 40px; font-size: 1.2em; font-weight: 900; cursor: pointer; box-shadow: 0 6px 20px rgba(38,222,129,0.4); transition: transform 0.2s; letter-spacing: 2px; }
+  .spin-btn:hover { transform: scale(1.05); }
+  .spin-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+  .question-display { min-height: 100px; background: linear-gradient(135deg, #fff9e6, #e6fff7); padding: 25px; border-radius: 15px; margin: 20px 0; text-align: center; font-size: 1.4em; font-weight: 700; color: #1e7a4c; display: flex; align-items: center; justify-content: center; border: 3px dashed #26de81; transition: all 0.4s; opacity: 0; transform: scale(0.8); }
+  .question-display.show { opacity: 1; transform: scale(1); animation: pulse 0.5s; }
+  @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.03); } }
+  .mono-card { background: linear-gradient(135deg, #e6fff7, #d4ffee); padding: 20px; border-radius: 15px; margin-bottom: 15px; box-shadow: 0 4px 15px rgba(38, 222, 129, 0.15); border-left: 6px solid #26de81; }
+  .mono-card h4 { color: #20bf6b; margin-bottom: 10px; }
+  .notes-area { width: 100%; min-height: 100px; padding: 12px; border: 2px dashed #26de81; border-radius: 10px; background: #fff; font-family: inherit; font-size: 0.95em; margin-top: 10px; resize: vertical; outline: none; }
+  .notes-area:focus { border-color: #00b894; box-shadow: 0 0 0 3px rgba(38, 222, 129, 0.15); }
+  .email-card { background: linear-gradient(135deg, #f0fff9, #e6fff7); padding: 20px; border-radius: 15px; margin-bottom: 15px; box-shadow: 0 4px 15px rgba(38, 222, 129, 0.15); border-left: 6px solid #26de81; }
+  .email-card .email-header { background: #fff; padding: 10px 15px; border-radius: 8px; font-size: 0.9em; color: #666; margin-bottom: 12px; border: 1px dashed #26de81; }
+  .email-card .email-header strong { color: #1e7a4c; }
+  .cl-header { text-align: center; padding: 25px 15px; background: linear-gradient(135deg, #e6fff7, #d4ffee, #f0fff9); border-radius: 15px; margin-bottom: 20px; border: 3px dashed #26de81; }
+  .cl-header .emojis { font-size: 1.5em; letter-spacing: 5px; margin-bottom: 8px; }
+  .cl-header h2 { font-size: 1.8em; background: linear-gradient(90deg, #00b894, #26de81, #20bf6b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 900; }
+  .cl-header .sub { color: #1e7a4c; margin-top: 8px; font-size: 0.95em; font-weight: 600; }
+  .cl-section { border-radius: 14px; padding: 18px 20px; margin-bottom: 18px; border: 2px dashed; }
+  .cl-section.lex { border-color: #fdcb6e; background: linear-gradient(120deg, #fff9e6, #fff); }
+  .cl-section.listen { border-color: #00cec9; background: linear-gradient(120deg, #e0fffe, #fff); }
+  .cl-section.read { border-color: #55efc4; background: linear-gradient(120deg, #e6fff7, #fff); }
+  .cl-section.speak { border-color: #ff7675; background: linear-gradient(120deg, #fff0f0, #fff); }
+  .cl-section.write { border-color: #26de81; background: linear-gradient(120deg, #e6fff7, #fff); }
+  .cl-section.gram { border-color: #20bf6b; background: linear-gradient(120deg, #d4ffee, #fff); }
+  .cl-section h3 { color: #1e7a4c; font-size: 1.15em; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+  .cl-item { display: flex; align-items: flex-start; gap: 10px; padding: 7px 10px; margin-bottom: 6px; background: rgba(255,255,255,0.7); border-radius: 8px; font-size: 0.95em; color: #2d3436; font-weight: 600; cursor: pointer; transition: background 0.2s; }
+  .cl-item:hover { background: #fff; }
+  .cl-item.done { background: linear-gradient(135deg, #e0ffe0, #f0fff5); color: #4a7a4a; }
+  .cl-item .mark { font-size: 1.2em; flex-shrink: 0; line-height: 1.2; user-select: none; transition: transform 0.2s; }
+  .cl-item:hover .mark { transform: scale(1.2); }
+  .cl-gram-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 15px; }
+  .cl-finish { margin-top: 20px; padding: 20px; border-radius: 14px; text-align: center; background: linear-gradient(90deg, #d4ffee 0%, #a8f0c6 50%, #7ee8a2 100%); box-shadow: 0 4px 15px rgba(38, 222, 129, 0.3); }
+  .cl-finish .top { font-size: 1.15em; font-weight: 900; color: #fff; text-shadow: 0 1px 3px rgba(0,0,0,0.2); }
+  .cl-finish .bottom { font-size: 0.95em; color: #1e5a3c; margin-top: 8px; font-weight: 700; }
+  .read-aloud-section { background: linear-gradient(135deg, #e6fff7, #f0fff9); border-left: 6px solid #26de81; padding: 25px; border-radius: 15px; margin-top: 30px; box-shadow: 0 6px 20px rgba(38,222,129,0.15); }
+  .timer-panel { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin: 20px 0; padding: 20px; background: #fff; border-radius: 12px; box-shadow: 0 3px 10px rgba(0,0,0,0.08); }
+  .timer-block { text-align: center; padding: 15px 25px; background: linear-gradient(135deg, #d4ffee, #e6fff7); border-radius: 12px; min-width: 200px; }
+  .timer-block .timer-label { font-weight: 700; color: #1e7a4c; margin-bottom: 8px; font-size: 0.9em; }
+  .timer-display { font-size: 2.5em; font-weight: 900; background: linear-gradient(135deg, #00b894, #26de81); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-variant-numeric: tabular-nums; margin: 8px 0; letter-spacing: 2px; }
+  .timer-btns { display: flex; gap: 8px; justify-content: center; margin-top: 10px; }
+  .timer-btn { padding: 8px 18px; border: none; border-radius: 20px; font-weight: 700; cursor: pointer; font-size: 0.85em; transition: transform 0.2s; }
+  .timer-btn.start { background: linear-gradient(135deg, #26de81, #00b894); color: #fff; }
+  .timer-btn.reset { background: linear-gradient(135deg, #ff7675, #d63031); color: #fff; }
+  .timer-btn:hover { transform: scale(1.05); }
+  .read-text-block { background: #fff; padding: 18px; border-radius: 12px; margin-bottom: 15px; box-shadow: 0 3px 10px rgba(0,0,0,0.06); line-height: 1.8; border-left: 5px solid #26de81; }
+  .read-text-block h4 { color: #1e7a4c; margin-bottom: 10px; font-size: 1em; }
+  .hw-sub-tabs { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
+  .hw-sub-tab { padding: 10px 20px; background: #fff; border: 2px solid #26de81; color: #1e7a4c; border-radius: 25px; cursor: pointer; font-weight: 700; transition: all 0.2s; }
+  .hw-sub-tab.active { background: linear-gradient(135deg, #26de81, #20bf6b); color: #fff; }
+  .hw-content { display: none; }
+  .hw-content.active { display: block; animation: fadeIn 0.4s; }
+  footer { text-align: center; padding: 20px; color: #fff; font-size: 0.9em; margin-top: 20px; position: relative; z-index: 1; text-shadow: 0 1px 2px rgba(0,0,0,0.2); }
+  .text-area-answer { width: 100%; min-height: 120px; padding: 12px; border: 2px solid #26de81; border-radius: 10px; background: #f0fff9; font-family: inherit; font-size: 0.95em; resize: vertical; outline: none; transition: all 0.2s; }
+  .text-area-answer:focus { background: #fff; box-shadow: 0 0 0 3px rgba(38, 222, 129, 0.2); }
+  .answer-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+  .answer-table th, .answer-table td { border: 2px solid #26de81; padding: 10px; text-align: center; background: #fff; }
+  .answer-table th { background: #e6fff7; color: #1e7a4c; font-weight: 700; }
+  .answer-table input { width: 100%; padding: 6px; border: 1px solid #ccc; border-radius: 6px; text-align: center; font-weight: 700; color: #1e7a4c; }
+  .reading-block { background: #fff; padding: 18px; border-radius: 12px; margin-bottom: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); line-height: 1.8; border-left: 4px solid #26de81; }
+  .reading-block p { margin-bottom: 12px; }
+  .reading-block p:last-child { margin-bottom: 0; }
+  .two-col { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; align-items: start; }
+  @media (max-width: 800px) { .two-col { grid-template-columns: 1fr; } }
+  .side-img { width: 100%; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.15); }
+  .gradable-table { width: 100%; border-collapse: collapse; margin: 15px 0; }
+  .gradable-table th, .gradable-table td { border: 2px solid #26de81; padding: 10px; background: #fff; text-align: left; }
+  .gradable-table th { background: #e6fff7; color: #1e7a4c; }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <header>
+    <h1>💚 Тема Б. Внешность и характер человека 💚</h1>
+    <p>🌟 Интерактивный курс подготовки к ОГЭ по английскому языку 🌟</p>
+  </header>
+
+  <div class="tabs">
+    <div class="tab active" data-tab="home">🏠 Главная</div>
+    <div class="tab" data-tab="vocab">📚 Лексика</div>
+    <div class="tab" data-tab="listening">🎧 Аудирование</div>
+    <div class="tab" data-tab="reading">📖 Чтение</div>
+    <div class="tab" data-tab="speaking">🎭 Говорение</div>
+    <div class="tab" data-tab="grammar">📝 Грамматика</div>
+    <div class="tab" data-tab="wordbuilding">🧩 Словообразование</div>
+    <div class="tab" data-tab="writing">✉️ Письмо</div>
+    <div class="tab" data-tab="review">🔄 Review</div>
+    <div class="tab" data-tab="checklist">✅ Чек-лист</div>
+    <div class="tab" data-tab="homework">📂 Домашка</div>
+  </div>
+
+  <!-- HOME -->
+  <div class="tab-content active" id="home">
+    <div class="section">
+      <h2>🗺️ План блока</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin-top: 15px;">
+        <div style="background:#fff; padding:15px; border-radius:12px; text-align:center; box-shadow:0 3px 10px rgba(0,0,0,0.08); border-top:4px solid #26de81; font-weight:700; color:#1e7a4c;">1️⃣ Лексика</div>
+        <div style="background:#fff; padding:15px; border-radius:12px; text-align:center; box-shadow:0 3px 10px rgba(0,0,0,0.08); border-top:4px solid #26de81; font-weight:700; color:#1e7a4c;">2️⃣ Аудирование</div>
+        <div style="background:#fff; padding:15px; border-radius:12px; text-align:center; box-shadow:0 3px 10px rgba(0,0,0,0.08); border-top:4px solid #26de81; font-weight:700; color:#1e7a4c;">3️⃣ Чтение</div>
+        <div style="background:#fff; padding:15px; border-radius:12px; text-align:center; box-shadow:0 3px 10px rgba(0,0,0,0.08); border-top:4px solid #26de81; font-weight:700; color:#1e7a4c;">4️⃣ Говорение</div>
+        <div style="background:#fff; padding:15px; border-radius:12px; text-align:center; box-shadow:0 3px 10px rgba(0,0,0,0.08); border-top:4px solid #26de81; font-weight:700; color:#1e7a4c;">5️⃣ Грамматика</div>
+        <div style="background:#fff; padding:15px; border-radius:12px; text-align:center; box-shadow:0 3px 10px rgba(0,0,0,0.08); border-top:4px solid #26de81; font-weight:700; color:#1e7a4c;">6️⃣ Словообразование</div>
+        <div style="background:#fff; padding:15px; border-radius:12px; text-align:center; box-shadow:0 3px 10px rgba(0,0,0,0.08); border-top:4px solid #26de81; font-weight:700; color:#1e7a4c;">7️⃣ Письмо</div>
+        <div style="background:#fff; padding:15px; border-radius:12px; text-align:center; box-shadow:0 3px 10px rgba(0,0,0,0.08); border-top:4px solid #26de81; font-weight:700; color:#1e7a4c;">8️⃣ Review</div>
+      </div>
+    </div>
+
+    <div class="section" style="border-left-color: #00b894;">
+      <h2>📖 Источники</h2>
+      <ul style="padding-left: 20px; line-height: 2;">
+        <li>📘 Prepare Intermediate B1 (level 4), 2nd edition, Cambridge</li>
+        <li>📗 Prepare Intermediate-Plus B1+ (level 5), 2nd edition, Cambridge</li>
+        <li>📙 English Vocabulary In Use A2-B1</li>
+        <li>📕 English Grammar In Use A2-B1</li>
+        <li>📓 Банк заданий ОГЭ (ФИПИ)</li>
+      </ul>
+    </div>
+
+    <div class="section" style="border-left-color: #fdcb6e;">
+      <h2>📋 Инструкция по работе</h2>
+      <ol style="padding-left: 20px; line-height: 2;">
+        <li>Начни с вкладки <b>📚 Лексика</b> — посмотри видео и изучи слова.</li>
+        <li>Перейди к <b>🎧 Аудированию</b> и <b>📖 Чтению</b> — отработай лексику в контексте.</li>
+        <li>Пройди <b>📝 Грамматику</b> — 8 правил с упражнениями.</li>
+        <li>Отработай <b>🧩 Словообразование</b>.</li>
+        <li>Попрактикуй <b>🎭 Говорение</b> — ролевая игра, интервью, монолог.</li>
+        <li>Напиши <b>✉️ Письмо</b> другу.</li>
+        <li>Пройди <b>🔄 Review</b> — проверочную работу на 40 баллов.</li>
+        <li>Отметь всё в <b>✅ Чек-листе</b>.</li>
+        <li>Дополнительно — <b>📂 Домашка</b>.</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- VOCABULARY -->
+  <div class="tab-content" id="vocab">
+    <div class="section">
+      <h2>📚 Активная лексика блока</h2>
+
+      <div class="media-block video">
+        <div class="media-label">🎬 Видео по теме</div>
+        <iframe src="https://www.youtube.com/embed/G4MTLLfIPRs" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      </div>
+
+      <h3>🔹 Существительные (14)</h3>
+      <div class="word-grid">
+        <div class="word-card"><div class="en">appearance 🔄</div><div class="ru">внешность</div></div>
+        <div class="word-card"><div class="en">height</div><div class="ru">рост</div></div>
+        <div class="word-card"><div class="en">weight</div><div class="ru">вес</div></div>
+        <div class="word-card"><div class="en">feature</div><div class="ru">черта (лица, характера)</div></div>
+        <div class="word-card"><div class="en">personality 🔄</div><div class="ru">личность</div></div>
+        <div class="word-card"><div class="en">character 🔄</div><div class="ru">характер, персонаж</div></div>
+        <div class="word-card"><div class="en">mood</div><div class="ru">настроение</div></div>
+        <div class="word-card"><div class="en">attitude</div><div class="ru">отношение</div></div>
+        <div class="word-card"><div class="en">confidence 🔄</div><div class="ru">уверенность</div></div>
+        <div class="word-card"><div class="en">patience 🔄</div><div class="ru">терпение</div></div>
+        <div class="word-card"><div class="en">honesty 🔄</div><div class="ru">честность</div></div>
+        <div class="word-card"><div class="en">creativity 🔄</div><div class="ru">творчество</div></div>
+        <div class="word-card"><div class="en">friendship 🔄</div><div class="ru">дружба</div></div>
+        <div class="word-card"><div class="en">achievement 🔄</div><div class="ru">достижение</div></div>
+      </div>
+
+      <h3>🔹 Прилагательные (39)</h3>
+      <div class="word-grid">
+        <div class="word-card"><div class="en">tall</div><div class="ru">высокий</div></div>
+        <div class="word-card"><div class="en">short</div><div class="ru">низкий; короткий</div></div>
+        <div class="word-card"><div class="en">slim</div><div class="ru">стройный</div></div>
+        <div class="word-card"><div class="en">overweight</div><div class="ru">полный</div></div>
+        <div class="word-card"><div class="en">well-built</div><div class="ru">хорошо сложённый</div></div>
+        <div class="word-card"><div class="en">elderly</div><div class="ru">пожилой</div></div>
+        <div class="word-card"><div class="en">middle-aged</div><div class="ru">среднего возраста</div></div>
+        <div class="word-card"><div class="en">young</div><div class="ru">молодой</div></div>
+        <div class="word-card"><div class="en">handsome</div><div class="ru">красивый (о мужчине)</div></div>
+        <div class="word-card"><div class="en">pretty</div><div class="ru">красивая (о женщине)</div></div>
+        <div class="word-card"><div class="en">attractive 🔄</div><div class="ru">привлекательный</div></div>
+        <div class="word-card"><div class="en">bald</div><div class="ru">лысый</div></div>
+        <div class="word-card"><div class="en">blonde</div><div class="ru">светловолосый</div></div>
+        <div class="word-card"><div class="en">dark-haired</div><div class="ru">темноволосый</div></div>
+        <div class="word-card"><div class="en">blue-eyed</div><div class="ru">голубоглазый</div></div>
+        <div class="word-card"><div class="en">red-haired</div><div class="ru">рыжеволосый</div></div>
+        <div class="word-card"><div class="en">brave</div><div class="ru">смелый</div></div>
+        <div class="word-card"><div class="en">clever</div><div class="ru">умный</div></div>
+        <div class="word-card"><div class="en">stubborn</div><div class="ru">упрямый</div></div>
+        <div class="word-card"><div class="en">curious 🔄</div><div class="ru">любопытный</div></div>
+        <div class="word-card"><div class="en">ambitious 🔄</div><div class="ru">амбициозный</div></div>
+        <div class="word-card"><div class="en">creative 🔄</div><div class="ru">творческий</div></div>
+        <div class="word-card"><div class="en">sensible 🔄</div><div class="ru">рассудительный</div></div>
+        <div class="word-card"><div class="en">rude 🔄</div><div class="ru">грубый</div></div>
+        <div class="word-card"><div class="en">polite 🔄</div><div class="ru">вежливый</div></div>
+        <div class="word-card"><div class="en">friendly 🔄</div><div class="ru">дружелюбный</div></div>
+        <div class="word-card"><div class="en">shy 🔄</div><div class="ru">застенчивый</div></div>
+        <div class="word-card"><div class="en">patient 🔄</div><div class="ru">терпеливый</div></div>
+        <div class="word-card"><div class="en">responsible 🔄</div><div class="ru">ответственный</div></div>
+        <div class="word-card"><div class="en">hardworking 🔄</div><div class="ru">трудолюбивый</div></div>
+        <div class="word-card"><div class="en">funny 🔄</div><div class="ru">смешной, забавный</div></div>
+        <div class="word-card"><div class="en">kind 🔄</div><div class="ru">добрый</div></div>
+        <div class="word-card"><div class="en">selfish 🔄</div><div class="ru">эгоистичный</div></div>
+        <div class="word-card"><div class="en">reliable 🔄</div><div class="ru">надёжный</div></div>
+        <div class="word-card"><div class="en">loyal</div><div class="ru">преданный</div></div>
+        <div class="word-card"><div class="en">famous 🔄</div><div class="ru">знаменитый</div></div>
+        <div class="word-card"><div class="en">talented 🔄</div><div class="ru">талантливый</div></div>
+        <div class="word-card"><div class="en">Scottish</div><div class="ru">шотландский</div></div>
+        <div class="word-card"><div class="en">Irish</div><div class="ru">ирландский</div></div>
+      </div>
+
+      <h3>🔹 Глаголы и фразовые глаголы (12)</h3>
+      <div class="word-grid">
+        <div class="word-card"><div class="en">describe 🔄</div><div class="ru">описывать</div></div>
+        <div class="word-card"><div class="en">resemble</div><div class="ru">быть похожим</div></div>
+        <div class="word-card"><div class="en">look like</div><div class="ru">быть похожим на</div></div>
+        <div class="word-card"><div class="en">wear</div><div class="ru">носить (одежду)</div></div>
+        <div class="word-card"><div class="en">behave 🔄</div><div class="ru">вести себя</div></div>
+        <div class="word-card"><div class="en">impress 🔄</div><div class="ru">производить впечатление</div></div>
+        <div class="word-card"><div class="en">recognise 🔄</div><div class="ru">узнавать</div></div>
+        <div class="word-card"><div class="en">take after</div><div class="ru">быть похожим на (родителя)</div></div>
+        <div class="word-card"><div class="en">dress up</div><div class="ru">наряжаться</div></div>
+        <div class="word-card"><div class="en">cheer up</div><div class="ru">подбадривать, веселеть</div></div>
+        <div class="word-card"><div class="en">calm down</div><div class="ru">успокаиваться</div></div>
+        <div class="word-card"><div class="en">support 🔄</div><div class="ru">поддерживать</div></div>
+      </div>
+
+      <h3>🔹 Фразы и устойчивые выражения</h3>
+      <div class="word-grid">
+        <div class="word-card"><div class="en">be interested in</div><div class="ru">интересоваться</div></div>
+        <div class="word-card"><div class="en">have curly/straight/wavy hair</div><div class="ru">иметь кудрявые / прямые / волнистые волосы</div></div>
+        <div class="word-card"><div class="en">have a medium build</div><div class="ru">иметь среднее телосложение</div></div>
+        <div class="word-card"><div class="en">be of average height</div><div class="ru">быть среднего роста</div></div>
+        <div class="word-card"><div class="en">have a good sense of humour</div><div class="ru">иметь хорошее чувство юмора</div></div>
+        <div class="word-card"><div class="en">make a good impression</div><div class="ru">производить хорошее впечатление</div></div>
+        <div class="word-card"><div class="en">judge by appearances</div><div class="ru">судить по внешности</div></div>
+        <div class="word-card"><div class="en">never judge a book by its cover</div><div class="ru">не суди по обложке</div></div>
+        <div class="word-card"><div class="en">be well-dressed</div><div class="ru">быть хорошо одетым</div></div>
+        <div class="word-card"><div class="en">in her/his early twenties</div><div class="ru">ей/ему чуть за двадцать</div></div>
+        <div class="word-card"><div class="en">have a lot of energy</div><div class="ru">быть полным энергии</div></div>
+        <div class="word-card"><div class="en">broad shoulders</div><div class="ru">широкие плечи</div></div>
+        <div class="word-card"><div class="en">athletic build</div><div class="ru">спортивное телосложение</div></div>
+        <div class="word-card"><div class="en">dress well</div><div class="ru">хорошо одеваться</div></div>
+      </div>
+
+      <a href="https://goo.su/JJnn9nF" target="_blank" class="quizlet-btn">🎯 Открыть Quizlet с карточками</a>
+    </div>
+  </div>
+
+  <!-- LISTENING -->
+  <div class="tab-content" id="listening">
+    <div class="section">
+      <h2>🎧 Prepare 4, Unit 13 «Mixed Feelings»</h2>
+      <p>Complete the sentences with the adjectives in the box. Then listen to the conversations and check.</p>
+      <div class="rule" style="background: #fff9e6; padding: 12px; border-radius: 10px; border-left: 5px solid #fdcb6e; margin-bottom: 15px;">
+        <b>Box:</b> amazed, brave, confused, disappointed, embarrassed, exhausted, grateful, hopeful, proud, relaxed, scared, stressed
+      </div>
+      <div class="media-block audio">
+        <div class="media-label">🔊 Аудио: PREPARE2_L4_SB_064.mp3</div>
+        <iframe src="https://drive.google.com/file/d/1z6k-6Wq8-dG8KSPQn6X4f-EXAMPLE/preview" allow="autoplay"></iframe>
+      </div>
+      <div class="two-col">
+        <div>
+          <div class="exercise-item">1. Tom's mum feels really <input class="fill-input"> because he got to the final of the tennis competition. Tom is <input class="fill-input"> because he didn't win.</div>
+          <div class="exercise-item">2. Vicky is feeling <input class="fill-input"> because she had football training all afternoon. However, she agrees to go to the shop for her dad and he is very <input class="fill-input">.</div>
+          <div class="exercise-item">3. Freddy is <input class="fill-input"> that Sadie designed the rugby poster. It looks so professional. But he's also <input class="fill-input">. He doesn't understand why Sadie is interested in rugby.</div>
+          <div class="exercise-item">4. Anna is feeling <input class="fill-input"> because she's got an exam tomorrow. Harry thinks she'll work better if she's <input class="fill-input">.</div>
+          <div class="exercise-item">5. Lucas feels <input class="fill-input"> because he made some stupid mistakes in his exam. He's still <input class="fill-input"> that he has passed.</div>
+          <div class="exercise-item">6. Dan is <input class="fill-input"> to tell his sister that he broke her phone. His mum tells him to be <input class="fill-input"> and tell her now.</div>
+        </div>
+        <div>
+          <img src="https://drive.google.com/thumbnail?id=1I1Nj930vNbuinlJIgIdWsULWjJNZUK0V&sz=w600" alt="Mixed feelings" class="side-img">
+        </div>
+      </div>
+    </div>
+
+    <div class="section" style="border-left-color: #00cec9;">
+      <h2>🎧 Prepare 5, Unit 18 «We Love Celebs!» — Listening 1</h2>
+      <p>Listen to five people talking about celebrities. Match four of the speakers to the sentences.</p>
+      <div class="media-block audio">
+        <div class="media-label">🔊 Аудио: PREPARE2_L5_SB_068.mp3</div>
+        <iframe src="https://drive.google.com/file/d/1-EXAMPLE-L5-SB068/preview" allow="autoplay"></iframe>
+      </div>
+      <ul class="question-list">
+        <li><span class="qmark">⬜</span> This speaker isn't really interested in the lives of celebrities.</li>
+        <li><span class="qmark">⬜</span> This speaker thinks that celebrities should be careful about what they do because fans do the same.</li>
+        <li><span class="qmark">⬜</span> This speaker felt sad about what the celebrities did.</li>
+        <li><span class="qmark">⬜</span> This speaker was surprised by the celebrity.</li>
+      </ul>
+    </div>
+
+    <div class="section" style="border-left-color: #20bf6b;">
+      <h2>🎧 Prepare 5, Unit 18 — Listening Part 4 (Interview with Pattie)</h2>
+      <p>You will hear an interview with a woman called Pattie. Read the questions and options. What do you think she will talk about?</p>
+      <div class="media-block audio">
+        <div class="media-label">🔊 Аудио: PREPARE2_L5_SB_070.mp3</div>
+        <iframe src="https://drive.google.com/file/d/1-EXAMPLE-L5-SB070/preview" allow="autoplay"></iframe>
+      </div>
+
+      <div class="exercise-item">
+        <b>1. Pattie thinks that some people who want to be famous</b><br>
+        <button class="mc-btn" data-q="1">A have little idea of how they will achieve it.</button>
+        <button class="mc-btn" data-q="1">B only consider the positive things about it.</button>
+        <button class="mc-btn" data-q="1">C are not prepared to work hard for it.</button>
+      </div>
+      <div class="exercise-item">
+        <b>2. What does Pattie say about the paparazzi?</b><br>
+        <button class="mc-btn" data-q="2">A Famous people and journalists need each other.</button>
+        <button class="mc-btn" data-q="2">B Being followed by them annoys celebrities.</button>
+        <button class="mc-btn" data-q="2">C Building a good relationship with them isn't easy.</button>
+      </div>
+      <div class="exercise-item">
+        <b>3. Pattie says that some fans</b><br>
+        <button class="mc-btn" data-q="3">A want too much from famous people.</button>
+        <button class="mc-btn" data-q="3">B behave in unusual ways towards famous people.</button>
+        <button class="mc-btn" data-q="3">C are disappointed when they finally meet someone famous.</button>
+      </div>
+      <div class="exercise-item">
+        <b>4. Pattie believes that if she became famous quickly, it would be hard to</b><br>
+        <button class="mc-btn" data-q="4">A give up her private life.</button>
+        <button class="mc-btn" data-q="4">B ask for advice from others.</button>
+        <button class="mc-btn" data-q="4">C learn how to give interviews.</button>
+      </div>
+      <div class="exercise-item">
+        <b>5. Pattie says most famous people especially enjoy</b><br>
+        <button class="mc-btn" data-q="5">A receiving free gifts from designers.</button>
+        <button class="mc-btn" data-q="5">B not having to do boring jobs any more.</button>
+        <button class="mc-btn" data-q="5">C being able to try new kinds of work.</button>
+      </div>
+      <div class="exercise-item">
+        <b>6. Pattie's most important advice for newly famous people is to</b><br>
+        <button class="mc-btn" data-q="6">A make sure you plan for the future.</button>
+        <button class="mc-btn" data-q="6">B not talk to anyone you don't trust.</button>
+        <button class="mc-btn" data-q="6">C try to hide any negative feelings.</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- READING -->
+  <div class="tab-content" id="reading">
+    <div class="section">
+      <h2>📖 THE PRICE OF PERFECTION: WHO DECIDES HOW WE LOOK?</h2>
+      <div style="background:#fff9e6; padding:10px 15px; border-radius:8px; font-size:0.9em; color:#665c00; margin-bottom:12px; border-left:4px solid #fdcb6e;">
+        💡 Выделяй слова и словосочетания разными цветами прямо в тексте! Выбери цвет — и кликай по словам.
+      </div>
+      <div class="highlight-tools">
+        <button class="hl-btn y" data-color="hl-yellow" title="Жёлтый"></button>
+        <button class="hl-btn g" data-color="hl-green" title="Зелёный"></button>
+        <button class="hl-btn p" data-color="hl-pink" title="Розовый"></button>
+        <button class="hl-btn b" data-color="hl-blue" title="Голубой"></button>
+        <button class="hl-btn" data-color="" style="background: #fff; border: 2px solid #ccc;" title="Сбросить">✖</button>
+      </div>
+
+      <div class="reading-text" id="readingText">
+        <p data-num="1">In 2026, the average teenager spends almost four hours a day on social media. That's more time than they spend eating, exercising, and talking to their families combined. And what are they looking at? Perfectly filtered faces, impossibly slim bodies, and endless advertisements for products that promise to make them beautiful. Welcome to the era of consumer culture, where your appearance is your brand, and your worth is measured in likes.</p>
+        <p data-num="2">Fifteen-year-old Mia from Manchester knows this pressure all too well. "Last year, I was really shy and didn't have much confidence," she says. "I was a bit overweight, and my skin wasn't great. I used to spend hours scrolling through TikTok, looking at beautiful, slim girls with perfect skin. They seemed so happy and confident. I felt miserable and lonely. I started buying expensive creams and make-up. I even saved up for months to buy the same clothes they wore. But nothing made me feel better. I just felt more stressed and anxious."</p>
+        <p data-num="3">Mia's story is not unusual. According to recent research, one in three teenagers feels unhappy with their appearance because of social media. The pressure to be "in trend" is enormous. Being different feels scary – like you're failing at being a teenager. But who decides what's trendy? Who decides that blonde hair is better than dark hair, that slim is better than well-built, or that being tall and athletic is the only way to be attractive? The answer, of course, is not us. It's the algorithm.</p>
+        <p data-num="4">TikTok, Instagram, and YouTube are not just platforms for sharing videos. They are powerful machines that sell products. Every time a teenager watches a video about a new beauty product, the algorithm shows them more of the same. The message is clear: you are not good enough. You need to buy more, change more, be more. And teenagers, who are naturally curious and want to be accepted, are the perfect consumers. They are ambitious, creative, and eager to impress. But they are also vulnerable.</p>
+        <p data-num="5">So, what can be done? Some experts say that parents and teachers should talk to teenagers about the dangers of social media. Others believe that social media companies should be more responsible. But perhaps the most important thing is for teenagers to support each other. "When I stopped comparing myself to influencers and started talking to my real friends, I felt much better," says Mia. "My best friend told me I was funny, kind, and reliable – and that mattered more than being slim. I realised that being different is not a weakness. It's a strength."</p>
+        <p data-num="6">The truth is simple: no filter, no trend, and no product can make you happy. Real confidence comes from being yourself – whether you're tall or short, slim or well-built, blonde or dark-haired, shy or sociable. As one psychologist put it: "The most attractive thing a person can wear is a smile. And that's always in trend."</p>
+      </div>
+    </div>
+
+    <!-- 4.1 main idea first -->
+    <div class="section" style="border-left-color: #ff7675;">
+      <h2>1️⃣ Choosing the main idea</h2>
+      <p>Which sentence best expresses the main idea of the text? Choose A, B or C.</p>
+      <div class="tfns-item"><p><b>A.</b> Social media platforms like TikTok and Instagram are harmless entertainment tools that help teenagers express their creativity and discover new trends.</p><div class="tfns-options"><button class="tfns-btn">A</button></div></div>
+      <div class="tfns-item"><p><b>B.</b> The pressure to follow beauty trends on social media makes teenagers feel inadequate and unhappy, but true confidence comes from accepting yourself rather than chasing perfection.</p><div class="tfns-options"><button class="tfns-btn">B</button></div></div>
+      <div class="tfns-item"><p><b>C.</b> Teenagers today are more ambitious and hardworking than previous generations, which is why they are so easily influenced by social media influencers and their product advertisements.</p><div class="tfns-options"><button class="tfns-btn">C</button></div></div>
+    </div>
+
+    <!-- 4.2 headings drag-drop -->
+    <div class="section" style="border-left-color: #00cec9;">
+      <h2>2️⃣ Matching headings to paragraphs</h2>
+      <p>Read paragraphs 2, 4 and 5 again. Match each paragraph with the most suitable heading. There is one extra heading you do not need to use.</p>
+
+      <div class="headings-bank" id="headingsBank">
+        <div class="heading-chip" draggable="true" data-heading="A">A. The commercial machine behind social media trends</div>
+        <div class="heading-chip" draggable="true" data-heading="B">B. The importance of friendship and self-acceptance</div>
+        <div class="heading-chip" draggable="true" data-heading="C">C. The dangers of traditional media</div>
+        <div class="heading-chip" draggable="true" data-heading="D">D. A personal story of pressure and low confidence</div>
+      </div>
+
+      <div class="exercise-item">
+        <b>Paragraph 2</b> <span class="drop-zone" data-zone="2">перетащи заголовок</span>
+      </div>
+      <div class="exercise-item">
+        <b>Paragraph 4</b> <span class="drop-zone" data-zone="4">перетащи заголовок</span>
+      </div>
+      <div class="exercise-item">
+        <b>Paragraph 5</b> <span class="drop-zone" data-zone="5">перетащи заголовок</span>
+      </div>
+    </div>
+
+    <!-- 4.3 T/F/NS -->
+    <div class="section" style="border-left-color: #55efc4;">
+      <h2>3️⃣ True / False / Not Stated</h2>
+      <p>Read paragraphs 1–3 again and decide if the statements are True (T), False (F) or Not Stated (NS).</p>
+      <div class="tfns-item"><p><b>1.</b> According to the text, the average teenager spends more time on social media than eating, exercising and talking to family combined.</p><div class="tfns-options"><button class="tfns-btn">True</button><button class="tfns-btn">False</button><button class="tfns-btn">Not Stated</button></div></div>
+      <div class="tfns-item"><p><b>2.</b> Mia bought expensive creams and make-up because she wanted to impress her friends at school.</p><div class="tfns-options"><button class="tfns-btn">True</button><button class="tfns-btn">False</button><button class="tfns-btn">Not Stated</button></div></div>
+      <div class="tfns-item"><p><b>3.</b> The text says that one in three teenagers feels unhappy with their appearance because of social media.</p><div class="tfns-options"><button class="tfns-btn">True</button><button class="tfns-btn">False</button><button class="tfns-btn">Not Stated</button></div></div>
+      <div class="tfns-item"><p><b>4.</b> Mia's parents were very supportive and helped her to feel better about herself.</p><div class="tfns-options"><button class="tfns-btn">True</button><button class="tfns-btn">False</button><button class="tfns-btn">Not Stated</button></div></div>
+      <div class="tfns-item"><p><b>5.</b> The author believes that algorithms decide what is considered trendy and attractive.</p><div class="tfns-options"><button class="tfns-btn">True</button><button class="tfns-btn">False</button><button class="tfns-btn">Not Stated</button></div></div>
+    </div>
+
+    <!-- 4.4 questions -->
+    <div class="section" style="border-left-color: #a29bfe;">
+      <h2>4️⃣ Comprehension questions (устно)</h2>
+      <p>Answer the questions in full sentences. Отмечай ✅ те, которые уже обсудили.</p>
+      <ul class="question-list">
+        <li><span class="qmark">⬜</span> Why does the author call teenagers "the perfect consumers"?</li>
+        <li><span class="qmark">⬜</span> How did Mia's feelings about herself change after she stopped comparing herself to influencers?</li>
+        <li><span class="qmark">⬜</span> According to the text, what is the most important thing teenagers can do to help each other?</li>
+      </ul>
+    </div>
+
+    <!-- Read aloud -->
+    <div class="read-aloud-section">
+      <h2 style="color: #1e7a4c;">🎤 Read aloud practice (ОГЭ, Task 1)</h2>
+      <p>Прочитай каждый текст вслух. Используй таймеры: сначала 1,5 минуты на подготовку, потом 2 минуты на чтение вслух.</p>
+
+      <div class="timer-panel">
+        <div class="timer-block">
+          <div class="timer-label">⏱️ Время на подготовку (1:30)</div>
+          <div class="timer-display" id="timer1">1:30</div>
+          <div class="timer-btns">
+            <button class="timer-btn start" onclick="startTimer('timer1', 90)">▶ Старт</button>
+            <button class="timer-btn reset" onclick="resetTimer('timer1', 90)">↺ Сброс</button>
+          </div>
+        </div>
+        <div class="timer-block">
+          <div class="timer-label">⏱️ Время на чтение вслух (2:00)</div>
+          <div class="timer-display" id="timer2">2:00</div>
+          <div class="timer-btns">
+            <button class="timer-btn start" onclick="startTimer('timer2', 120)">▶ Старт</button>
+            <button class="timer-btn reset" onclick="resetTimer('timer2', 120)">↺ Сброс</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="read-text-block">
+        <h4>📘 Text 1 — Netball</h4>
+        <p>Netball is played by over 20 million people in more than 70 countries of the world. It was invented in 1892 as women's basketball. However, netball is different from basketball in many ways. For example, the ball and the basket are smaller and the court is bigger. The players cannot run with the ball. They are not allowed to touch the players who they are playing with. Netball has seven players in each team (not five as in basketball). During the 20th century, the game became very popular in English-speaking countries. Traditionally, only girls and women played netball. Nowadays, netball is the number one women's sport in the world but boys and men are starting to play it too.</p>
+      </div>
+
+      <div class="read-text-block">
+        <h4>📘 Text 2 — The atmosphere</h4>
+        <p>Studies of the atmosphere first received technical support in 1912. Equipment to measure temperature and pressure was invented in Germany. But the question was how to raise it high into the air. In 1921, Russian engineers suggested using planes. The special equipment was put on planes that made regular flights. Thanks to this, scientists got a lot of new information about the structure of the atmosphere. Nowadays scientists use modern flying laboratories to study the structure of clouds at different levels. Unlike the first planes, these laboratories can work in any weather and are able to predict climate changes.</p>
+      </div>
+
+      <div class="read-text-block">
+        <h4>📘 Text 3 — The Moon</h4>
+        <p>Most people enjoy watching the night sky. And the brightest object in the sky is the Moon. Every night the Moon rises in the East and sets in the West. It takes about 27 days to go around the Earth, and it's an interesting fact that we always see the same side of the Moon. The Moon is the closest object to the Earth. It would take us only thirteen hours to get to the Moon by rocket. If we were able to travel at the speed of light, it would take a bit less than two seconds.</p>
+        <p>There is a very thin atmosphere on the Moon. Life is not possible there. In spite of this, the Moon can be used as a base for space exploration and even for space tourism. Some space companies say that they will be able to take tourists to the Moon as soon as in 2023.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SPEAKING -->
+  <div class="tab-content" id="speaking">
+    <div class="sub-tabs">
+      <div class="sub-tab active" data-sub="role">🎭 Ролевая игра</div>
+      <div class="sub-tab" data-sub="interview">🎤 Интервью</div>
+      <div class="sub-tab" data-sub="monologue">🗣️ Монолог</div>
+    </div>
+
+    <div class="sub-content active" id="role">
+      <div class="section">
+        <h2>🎭 Ролевая игра: «Перед школьной фотосессией»</h2>
+        <p><b>Контекст:</b> Два друга готовятся к школьной фотосессии для выпускного альбома. Alex очень нервничает из-за своей внешности. Sam пытается поддержать друга. Jamie — общий друг, помогает им прийти к согласию.</p>
+
+        <div class="role-card">
+          <h4>😟 Карточка для Alex</h4>
+          <p><b>Роль:</b> Застенчивый подросток, который недоволен своей внешностью.</p>
+          <p><b>Ситуация:</b> Завтра школьная фотосессия. Ты очень волнуешься. Тебе кажется, что ты недостаточно красив(а). Ты хочешь изменить свою внешность (покрасить волосы, купить дорогую одежду), но не уверен(а), что это поможет. Ты чувствуешь себя подавленно и одиноко.</p>
+          <p><b>Что выразить:</b> неуверенность, желание измениться, страх осуждения, просьбу о поддержке.</p>
+          <ul>
+            <li>I feel really insecure about my appearance.</li>
+            <li>I'm not tall enough / slim enough / good-looking enough.</li>
+            <li>I wish I looked like those models on TikTok.</li>
+            <li>I'm afraid I'll make a bad impression.</li>
+            <li>I don't feel confident at all.</li>
+            <li>What should I do to look better?</li>
+            <li>I feel so lonely and miserable.</li>
+          </ul>
+        </div>
+
+        <div class="role-card" style="border-top-color: #00cec9;">
+          <h4>💚 Карточка для Sam</h4>
+          <p><b>Роль:</b> Верный друг, который поддерживает Alex.</p>
+          <p><b>Ситуация:</b> Ты видишь, что Alex очень расстроен. Ты хочешь помочь ему понять, что внешность — не главное, а уверенность и характер делают человека привлекательным. Ты также хочешь предложить практические решения.</p>
+          <p><b>Что выразить:</b> поддержку, аргументы, комплименты, советы, уверенность.</p>
+          <ul>
+            <li>You always look great to me.</li>
+            <li>You have a wonderful sense of humour.</li>
+            <li>You are kind, reliable and loyal — that's what matters.</li>
+            <li>Don't judge yourself by appearances.</li>
+            <li>Never judge a book by its cover.</li>
+            <li>Let's choose an outfit together — you'll feel more confident.</li>
+            <li>You should focus on your good qualities.</li>
+            <li>I'll support you no matter what.</li>
+          </ul>
+        </div>
+
+        <div class="role-card" style="border-top-color: #fdcb6e;">
+          <h4>🕊️ Карточка для Jamie (дополнительный персонаж)</h4>
+          <p><b>Роль:</b> Общий друг Alex и Sam. Помогает им прийти к согласию.</p>
+          <p><b>Ситуация:</b> Ты видишь, что Alex и Sam спорят о внешности. Ты хочешь помочь им обоим: напомнить, что заботиться о внешности — нормально, но не стоит забывать о внутренних качествах.</p>
+          <ul>
+            <li>I think you both have a point.</li>
+            <li>Appearance is important, but character matters more.</li>
+            <li>You have a lot in common — don't argue about this.</li>
+            <li>Why don't you help each other get ready?</li>
+            <li>Let's all get together and choose outfits.</li>
+            <li>I think you should support each other.</li>
+            <li>You both look great — just be yourselves.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-content" id="interview">
+      <div class="section">
+        <h2>🎤 Интервью — Колесо фортуны</h2>
+        <p>Нажми <b>SPIN</b>, чтобы раскрутить колесо и получить вопрос. Ответь на него устно. Вопрос исчезнет из колеса, пока не закончатся все вопросы.</p>
+
+        <div class="wheel-container">
+          <div class="wheel-wrapper">
+            <div class="wheel-pointer"></div>
+            <svg class="wheel-svg" id="wheel" viewBox="-1 -1 2 2"></svg>
+          </div>
+        </div>
+
+        <div style="text-align:center; margin-top: 10px;">
+          <button class="spin-btn" id="spinBtn" onclick="spinWheel()">SPIN 🎡</button>
+        </div>
+
+        <div class="question-display" id="questionDisplay">Нажми SPIN, чтобы получить вопрос 🎲</div>
+      </div>
+    </div>
+
+    <div class="sub-content" id="monologue">
+      <div class="section">
+        <h2>🗣️ Монолог — Task 3</h2>
+
+        <div class="rule-block" style="border-top-color: #00cec9; margin-bottom: 20px;">
+          <h3>📋 Справка: как выполнять Task 3</h3>
+          <div class="rule">
+            <p><b>Структура монолога:</b></p>
+            <ul style="padding-left: 20px; line-height: 1.9;">
+              <li>🔹 <b>Вступление:</b> <i>Now I'm going to give a talk about &lt;тема&gt;</i></li>
+              <li>🔹 <b>Основная часть:</b> ответ на все 4 вопроса по порядку, используя связки <i>Personally, As for, Well</i></li>
+              <li>🔹 <b>Заключение:</b> <i>That's all what I wanted to say.</i></li>
+            </ul>
+            <p style="margin-top: 10px;"><b>Правила:</b></p>
+            <ul style="padding-left: 20px; line-height: 1.9;">
+              <li>Не читать пункты плана вслух — отвечай как связный текст.</li>
+              <li>Используй слова-связки в начале каждого ответа.</li>
+              <li>10–12 фраз (минимум 3 предложения на каждый пункт).</li>
+              <li>Время: 1,5 минуты на подготовку, не более 2 минут на ответ.</li>
+            </ul>
+          </div>
+
+          <h3>🧩 Шаблон монолога</h3>
+          <div class="example"><div class="en"><b>Now I'm going to give a talk about</b> ____________.</div></div>
+          <div class="example"><div class="en"><b>Personally,</b> I think ____________. ____________.</div></div>
+          <div class="example"><div class="en"><b>As for</b> ____________, I can say that ____________. ____________.</div></div>
+          <div class="example"><div class="en"><b>Well,</b> ____________. ____________.</div></div>
+          <div class="example"><div class="en"><b>In conclusion, I'd like to say that</b> ____________. <b>That's all what I wanted to say.</b></div></div>
+        </div>
+
+        <div class="mono-card">
+          <h4>🌟 Task 3. Best Friend</h4>
+          <p>You are going to give a talk about <b>your best friend</b>. You will have to start in 1.5 minutes and speak for not more than 2 minutes (10–12 sentences). Remember to say:</p>
+          <ul style="padding-left: 20px; margin-top: 10px;">
+            <li>what people need friends for;</li>
+            <li>how long you and your friend have known each other;</li>
+            <li>what you enjoy doing together;</li>
+            <li>what your attitude to friendship is.</li>
+          </ul>
+          <p style="margin-top: 8px;"><i>You have to talk continuously.</i></p>
+          <textarea class="notes-area" placeholder="📝 Запиши свои заметки здесь..."></textarea>
+        </div>
+
+        <div class="mono-card" style="border-left-color: #00cec9; background: linear-gradient(135deg, #e0fffe, #f0fffe);">
+          <h4>📚 Task 3. Reading Books</h4>
+          <p>You are going to give a talk about <b>reading books</b>. You will have to start in 1.5 minutes and speak for not more than 2 minutes (10–12 sentences). Remember to say:</p>
+          <ul style="padding-left: 20px; margin-top: 10px;">
+            <li>whether reading is popular with teenagers, and why, or why not;</li>
+            <li>what kind of books you like reading;</li>
+            <li>why many people prefer e-books to paper books;</li>
+            <li>what your attitude to reading is.</li>
+          </ul>
+          <p style="margin-top: 8px;"><i>You have to talk continuously.</i></p>
+          <textarea class="notes-area" placeholder="📝 Запиши свои заметки здесь..."></textarea>
+        </div>
+
+        <div class="mono-card" style="border-left-color: #fdcb6e; background: linear-gradient(135deg, #fff9e6, #fffdf0);">
+          <h4>🎬 Task 3. Films</h4>
+          <p>You are going to give a talk about <b>films</b>. You will have to start in 1.5 minutes and speak for not more than 2 minutes (10–12 sentences). Remember to say:</p>
+          <ul style="padding-left: 20px; margin-top: 10px;">
+            <li>what kinds of films modern teenagers enjoy;</li>
+            <li>where you prefer watching films: on TV, on the Internet or in the cinema, and why;</li>
+            <li>what film you have seen recently, what it was about;</li>
+            <li>what your attitude to watching films as a way to spend your free time.</li>
+          </ul>
+          <p style="margin-top: 8px;"><i>You have to talk continuously.</i></p>
+          <textarea class="notes-area" placeholder="📝 Запиши свои заметки здесь..."></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GRAMMAR -->
+  <div class="tab-content" id="grammar">
+    <div class="grammar-nav">
+      <button class="active" data-rule="r1">1. Порядок прилагательных</button>
+      <button data-rule="r2">2. Степени сравнения</button>
+      <button data-rule="r3">3. as... as / not so... as</button>
+      <button data-rule="r4">4. Наречия: степени</button>
+      <button data-rule="r5">5. Наречия-прилагательные</button>
+      <button data-rule="r6">6. -ed/-ing прилагательные</button>
+      <button data-rule="r7">7. Префиксы un-, in-, im-</button>
+      <button data-rule="r8">8. Глаголы-связки</button>
+    </div>
+
+    <!-- R1 -->
+    <div class="grammar-rule active" id="r1">
+      <div class="rule-block">
+        <h2>1️⃣ Порядок прилагательных</h2>
+        <div class="rule">
+          <p>Когда перед существительным стоит несколько прилагательных, они располагаются в определённом порядке:</p>
+          <p><b>мнение</b> (opinion) → <b>размер</b> (size) → <b>возраст</b> (age) → <b>форма</b> (shape) → <b>цвет</b> (colour) → <b>происхождение</b> (origin) → <b>материал</b> (material) → <b>назначение</b> (purpose).</p>
+          <p>Прилагательные мнения обычно стоят перед фактами.</p>
+        </div>
+        <h3>Примеры:</h3>
+        <div class="example"><span class="en">She has beautiful long curly hair.</span><div class="ru">У неё красивые длинные кудрявые волосы.</div></div>
+        <div class="example"><span class="en">He is a nice tall young man.</span><div class="ru">Он милый высокий молодой человек.</div></div>
+        <div class="example"><span class="en">I bought a lovely little round wooden table.</span><div class="ru">Я купил(а) милый маленький круглый деревянный стол.</div></div>
+        <div class="example"><span class="en">She wore a beautiful black silk dress.</span><div class="ru">Она надела красивое чёрное шёлковое платье.</div></div>
+        <div class="example"><span class="en">He has big blue eyes.</span><div class="ru">У него большие голубые глаза.</div></div>
+        <h3>✍️ Упражнение 1. Расположи прилагательные в правильном порядке.</h3>
+        <div class="exercise-item">1. a (wooden / round / beautiful) table → <input class="fill-input" style="width:100%;"></div>
+        <div class="exercise-item">2. an (young / interesting / tall) man → <input class="fill-input" style="width:100%;"></div>
+        <div class="exercise-item">3. a (black / leather / nice) bag → <input class="fill-input" style="width:100%;"></div>
+        <div class="exercise-item">4. (blue / big / beautiful) eyes → <input class="fill-input" style="width:100%;"></div>
+        <div class="exercise-item">5. a (French / old / interesting) painting → <input class="fill-input" style="width:100%;"></div>
+        <div class="exercise-item">6. (curly / long / lovely) hair → <input class="fill-input" style="width:100%;"></div>
+        <div class="exercise-item">7. a (little / old / cute) dog → <input class="fill-input" style="width:100%;"></div>
+        <div class="exercise-item">8. a (cotton / white / clean) shirt → <input class="fill-input" style="width:100%;"></div>
+        <div class="exercise-item">9. an (American / old / famous) writer → <input class="fill-input" style="width:100%;"></div>
+        <div class="exercise-item">10. a (slim / tall / friendly) girl → <input class="fill-input" style="width:100%;"></div>
+      </div>
+    </div>
+
+    <!-- R2 -->
+    <div class="grammar-rule" id="r2">
+      <div class="rule-block">
+        <h2>2️⃣ Степени сравнения прилагательных</h2>
+        <div class="rule">
+          <p><b>ОБРАЗОВАНИЕ СТЕПЕНЕЙ</b></p>
+          <table class="gradable-table">
+            <tr><th>Тип прилагательного</th><th>Сравнительная</th><th>Превосходная</th><th>Пример</th></tr>
+            <tr><td>Односложные</td><td>+ -er</td><td>+ -est</td><td>tall → taller → the tallest</td></tr>
+            <tr><td>Двусложные на -y</td><td>-y → -ier</td><td>-y → -iest</td><td>pretty → prettier → the prettiest</td></tr>
+            <tr><td>Двусложные и многосложные</td><td>more + прил.</td><td>the most + прил.</td><td>attractive → more attractive → the most attractive</td></tr>
+            <tr><td>Наречия на -ly</td><td>more + нареч.</td><td>most + нареч.</td><td>politely → more politely → most politely</td></tr>
+          </table>
+          <p><b>Особые случаи написания:</b></p>
+          <ul style="padding-left: 20px;">
+            <li>немая -e опускается: large → larger → the largest</li>
+            <li>конечная согласная удваивается после краткой гласной: big → bigger → the biggest</li>
+            <li>-y меняется на -i перед -er/-est: happy → happier → the happiest</li>
+          </ul>
+        </div>
+
+        <h3>🔄 Двусложные, образующие степени ОБОИМИ способами</h3>
+        <table class="gradable-table">
+          <tr><th>Прилагательное</th><th>Вариант 1</th><th>Вариант 2</th></tr>
+          <tr><td>clever</td><td>cleverer / the cleverest</td><td>more clever / the most clever</td></tr>
+          <tr><td>narrow</td><td>narrower / the narrowest</td><td>more narrow / the most narrow</td></tr>
+          <tr><td>quiet</td><td>quieter / the quietest</td><td>more quiet / the most quiet</td></tr>
+          <tr><td>simple</td><td>simpler / the simplest</td><td>more simple / the most simple</td></tr>
+          <tr><td>friendly</td><td>friendlier / the friendliest</td><td>more friendly / the most friendly</td></tr>
+        </table>
+
+        <h3>⚠️ Исключения (неправильные формы)</h3>
+        <table class="gradable-table">
+          <tr><th>Положительная</th><th>Сравнительная</th><th>Превосходная</th></tr>
+          <tr><td>good</td><td>better</td><td>the best</td></tr>
+          <tr><td>bad</td><td>worse</td><td>the worst</td></tr>
+          <tr><td>far</td><td>farther / further</td><td>the farthest / the furthest</td></tr>
+          <tr><td>little</td><td>less</td><td>the least</td></tr>
+          <tr><td>many / much</td><td>more</td><td>the most</td></tr>
+          <tr><td>old</td><td>older / elder</td><td>the oldest / the eldest</td></tr>
+        </table>
+
+        <h3>📎 Нюансы употребления</h3>
+        <table class="gradable-table">
+          <tr><th>Правило</th><th>Пример</th></tr>
+          <tr><td>После сравнительной – than</td><td>He is taller than his brother.</td></tr>
+          <tr><td>Перед превосходной – the</td><td>She is the most beautiful girl.</td></tr>
+          <tr><td>После превосходной с местом – in</td><td>the tallest student in the class</td></tr>
+          <tr><td>После превосходной с периодом – of</td><td>the happiest day of my life</td></tr>
+          <tr><td>Усиление перед сравнительной: much, a lot, far, a bit, a little, slightly</td><td>She is much more confident than before.</td></tr>
+          <tr><td>Конструкция the ... the ...</td><td>The more you practise, the better you look.</td></tr>
+          <tr><td>Повтор для непрерывного изменения: better and better, more and more</td><td>Her English is getting better and better.</td></tr>
+          <tr><td>Farther – расстояние; further – время / переносное</td><td>I can't walk further.</td></tr>
+          <tr><td>Older – сравнение объектов; elder – только о членах семьи</td><td>My elder sister is a doctor.</td></tr>
+          <tr><td>Elder не используется с than</td><td>My sister is older than me.</td></tr>
+        </table>
+
+        <h3>Примеры:</h3>
+        <div class="example"><span class="en">He is taller than his father.</span><div class="ru">Он выше своего отца.</div></div>
+        <div class="example"><span class="en">She is the most attractive girl in our class.</span><div class="ru">Она самая привлекательная девочка в нашем классе.</div></div>
+        <div class="example"><span class="en">My friend is much more reliable than me.</span><div class="ru">Мой друг намного надёжнее меня.</div></div>
+        <div class="example"><span class="en">The kinder you are, the more friends you have.</span><div class="ru">Чем добрее ты, тем больше у тебя друзей.</div></div>
+
+        <h3>✍️ Упражнение 2. Раскрой скобки, поставив прилагательное в нужную степень.</h3>
+        <div class="exercise-item">1. My brother is (tall) <input class="fill-input"> than me.</div>
+        <div class="exercise-item">2. She is (beautiful) <input class="fill-input"> girl in our school.</div>
+        <div class="exercise-item">3. This exercise is (easy) <input class="fill-input"> than the previous one.</div>
+        <div class="exercise-item">4. He is (reliable) <input class="fill-input"> friend I have.</div>
+        <div class="exercise-item">5. Her character is (sociable) <input class="fill-input"> than her sister's.</div>
+        <div class="exercise-item">6. This is (bad) <input class="fill-input"> film I've ever seen.</div>
+        <div class="exercise-item">7. My hair is (long) <input class="fill-input"> than yours.</div>
+        <div class="exercise-item">8. He is (good) <input class="fill-input"> student in the class.</div>
+        <div class="exercise-item">9. She is (patient) <input class="fill-input"> than her mother.</div>
+        <div class="exercise-item">10. This dress is (expensive) <input class="fill-input"> than that one.</div>
+        <div class="exercise-item">11. He is (clever) <input class="fill-input"> than his friend.</div>
+        <div class="exercise-item">12. She is (friendly) <input class="fill-input"> person in our group.</div>
+        <div class="exercise-item">13. His marks are getting (good) <input class="fill-input"> and (good) <input class="fill-input">.</div>
+        <div class="exercise-item">14. The (much) <input class="fill-input"> you practise, the (well) <input class="fill-input"> you speak.</div>
+        <div class="exercise-item">15. My (old) <input class="fill-input"> sister is a doctor.</div>
+        <div class="exercise-item">16. She is (attractive) <input class="fill-input"> than her cousin.</div>
+        <div class="exercise-item">17. This is (interesting) <input class="fill-input"> book I've ever read.</div>
+        <div class="exercise-item">18. He is (ambitious) <input class="fill-input"> than his brother.</div>
+        <div class="exercise-item">19. She is (slim) <input class="fill-input"> than her friend.</div>
+        <div class="exercise-item">20. This is (happy) <input class="fill-input"> day of my life.</div>
+      </div>
+    </div>
+
+    <!-- R3 -->
+    <div class="grammar-rule" id="r3">
+      <div class="rule-block">
+        <h2>3️⃣ Конструкции as... as, not so... as</h2>
+        <div class="rule">
+          <p><b>as + прилагательное + as</b> — для сравнения равных качеств: <i>He is as tall as his father.</i></p>
+          <p><b>not so + прилагательное + as</b> или <b>not as + прилагательное + as</b> — для неравенства: <i>She is not so shy as her sister.</i></p>
+          <p><b>less + прилагательное + than</b> — менее... чем: <i>He is less talkative than me.</i></p>
+        </div>
+        <h3>Примеры:</h3>
+        <div class="example"><span class="en">He is as tall as his father.</span><div class="ru">Он такой же высокий, как его отец.</div></div>
+        <div class="example"><span class="en">She is not so shy as her sister.</span><div class="ru">Она не такая застенчивая, как её сестра.</div></div>
+        <div class="example"><span class="en">This dress is as beautiful as that one.</span><div class="ru">Это платье такое же красивое, как то.</div></div>
+        <div class="example"><span class="en">My friend is not as talkative as me.</span><div class="ru">Мой друг не такой разговорчивый, как я.</div></div>
+        <div class="example"><span class="en">He is less patient than his brother.</span><div class="ru">Он менее терпелив, чем его брат.</div></div>
+        <h3>✍️ Упражнение 3. Вставь as... as, not so... as или less... than.</h3>
+        <div class="exercise-item">1. She is <input class="fill-input"> friendly <input class="fill-input"> her cousin.</div>
+        <div class="exercise-item">2. He is <input class="fill-input"> tall <input class="fill-input"> his father.</div>
+        <div class="exercise-item">3. My hair is <input class="fill-input"> long <input class="fill-input"> yours.</div>
+        <div class="exercise-item">4. This book is <input class="fill-input"> interesting <input class="fill-input"> that one.</div>
+        <div class="exercise-item">5. She is <input class="fill-input"> sociable <input class="fill-input"> her friend.</div>
+        <div class="exercise-item">6. He is <input class="fill-input"> reliable <input class="fill-input"> his brother.</div>
+        <div class="exercise-item">7. I am <input class="fill-input"> patient <input class="fill-input"> my sister.</div>
+        <div class="exercise-item">8. This film is <input class="fill-input"> boring <input class="fill-input"> the previous one.</div>
+        <div class="exercise-item">9. She is <input class="fill-input"> beautiful <input class="fill-input"> a model.</div>
+        <div class="exercise-item">10. He is <input class="fill-input"> ambitious <input class="fill-input"> his friend.</div>
+      </div>
+    </div>
+
+    <!-- R4 -->
+    <div class="grammar-rule" id="r4">
+      <div class="rule-block">
+        <h2>4️⃣ Наречия: степени сравнения</h2>
+        <div class="rule">
+          <p>Наречия образа действия, образованные с помощью <b>-ly</b>, образуют сравнительную степень с <b>more</b>, превосходную – с <b>most</b>: <i>more politely, most politely</i>.</p>
+          <p>Некоторые наречия (fast, hard, early, late) образуют степени с <b>-er/-est</b>: <i>faster, fastest</i>.</p>
+          <p>Исключения: well → better → best, badly → worse → worst, much → more → most, little → less → least.</p>
+        </div>
+        <h3>Примеры:</h3>
+        <div class="example"><span class="en">He speaks English more fluently than me.</span><div class="ru">Он говорит по-английски более бегло, чем я.</div></div>
+        <div class="example"><span class="en">She behaves more politely than her brother.</span><div class="ru">Она ведёт себя вежливее, чем её брат.</div></div>
+        <div class="example"><span class="en">He works harder than everyone.</span><div class="ru">Он работает усерднее всех.</div></div>
+        <div class="example"><span class="en">She did the test worse than last time.</span><div class="ru">Она написала тест хуже, чем в прошлый раз.</div></div>
+        <h3>✍️ Упражнение 4. Образуй наречие и поставь в нужную степень.</h3>
+        <div class="exercise-item">1. She speaks English (fluent) <input class="fill-input"> than her sister.</div>
+        <div class="exercise-item">2. He behaves (polite) <input class="fill-input"> than his cousin.</div>
+        <div class="exercise-item">3. She works (hard) <input class="fill-input"> than anyone in the class.</div>
+        <div class="exercise-item">4. He did the test (bad) <input class="fill-input"> than last time.</div>
+        <div class="exercise-item">5. She sings (beautiful) <input class="fill-input"> than her friend.</div>
+        <div class="exercise-item">6. He runs (fast) <input class="fill-input"> than his brother.</div>
+        <div class="exercise-item">7. She dresses (stylish) <input class="fill-input"> than her classmates.</div>
+        <div class="exercise-item">8. He speaks (serious) <input class="fill-input"> than before.</div>
+        <div class="exercise-item">9. She smiles (happy) <input class="fill-input"> than yesterday.</div>
+        <div class="exercise-item">10. He acts (careful) <input class="fill-input"> than his friend.</div>
+      </div>
+    </div>
+
+    <!-- R5 -->
+    <div class="grammar-rule" id="r5">
+      <div class="rule-block">
+        <h2>5️⃣ Наречия, совпадающие с прилагательными</h2>
+        <div class="rule">
+          <p>Некоторые слова могут быть и прилагательными, и наречиями без изменения формы: <b>fast, hard, late, early, high, low, long, deep, near, right, wrong</b>.</p>
+          <p>Но есть исключения: <b>hardly</b> (едва), <b>lately</b> (в последнее время) – это наречия с другим значением.</p>
+        </div>
+        <h3>Примеры:</h3>
+        <div class="example"><span class="en">He is a fast runner. He runs fast.</span><div class="ru">Он быстрый бегун. Он бегает быстро.</div></div>
+        <div class="example"><span class="en">She is a hard worker. She works hard.</span><div class="ru">Она трудолюбивый работник. Она работает усердно.</div></div>
+        <div class="example"><span class="en">I was late. I got up late.</span><div class="ru">Я опоздал. Я встал поздно.</div></div>
+        <div class="example"><span class="en">He hardly spoke to me.</span><div class="ru">Он почти не разговаривал со мной.</div></div>
+        <h3>✍️ Упражнение 5. Выбери правильную форму.</h3>
+        <div class="exercise-item">1. He is a (fast / fastly) <input class="fill-input"> runner.</div>
+        <div class="exercise-item">2. She works (hard / hardly) <input class="fill-input">.</div>
+        <div class="exercise-item">3. I got up (late / lately) <input class="fill-input"> this morning.</div>
+        <div class="exercise-item">4. He (hard / hardly) <input class="fill-input"> ever argues with his friends.</div>
+        <div class="exercise-item">5. She is a (hard / hardly) <input class="fill-input"> worker.</div>
+        <div class="exercise-item">6. He runs very (fast / fastly) <input class="fill-input">.</div>
+        <div class="exercise-item">7. I haven't seen him (late / lately) <input class="fill-input">.</div>
+        <div class="exercise-item">8. She got up (early / earlyly) <input class="fill-input">.</div>
+        <div class="exercise-item">9. He speaks (serious / seriously) <input class="fill-input"> about his feelings.</div>
+        <div class="exercise-item">10. She is a (polite / politely) <input class="fill-input"> girl.</div>
+      </div>
+    </div>
+
+    <!-- R6 -->
+    <div class="grammar-rule" id="r6">
+      <div class="rule-block">
+        <h2>6️⃣ Прилагательные на -ed / -ing</h2>
+        <div class="rule">
+          <p><b>-ed</b> описывает чувства человека (как он себя чувствует): <i>I am bored.</i></p>
+          <p><b>-ing</b> описывает качество предмета или ситуации, которые вызывают это чувство: <i>The film is boring.</i></p>
+          <p>Пары: interested – interesting, excited – exciting, annoyed – annoying, disappointed – disappointing, tired – tiring, embarrassed – embarrassing, confused – confusing, amazed – amazing, shocked – shocking, worried – worrying.</p>
+        </div>
+        <h3>Примеры:</h3>
+        <div class="example"><span class="en">I was disappointed with my exam results.</span><div class="ru">Я был разочарован результатами экзамена.</div></div>
+        <div class="example"><span class="en">The results were disappointing.</span><div class="ru">Результаты были разочаровывающими.</div></div>
+        <div class="example"><span class="en">She is interested in art.</span><div class="ru">Она интересуется искусством.</div></div>
+        <div class="example"><span class="en">Art is interesting.</span><div class="ru">Искусство интересное.</div></div>
+        <h3>✍️ Упражнение 6. Выбери правильное прилагательное (-ed или -ing).</h3>
+        <div class="exercise-item">1. I was (disappointed / disappointing) <input class="fill-input"> with my mark.</div>
+        <div class="exercise-item">2. The film was very (bored / boring) <input class="fill-input">.</div>
+        <div class="exercise-item">3. She is (interested / interesting) <input class="fill-input"> in fashion.</div>
+        <div class="exercise-item">4. The lesson was (tired / tiring) <input class="fill-input">.</div>
+        <div class="exercise-item">5. He was (annoyed / annoying) <input class="fill-input"> by his friend's behaviour.</div>
+        <div class="exercise-item">6. Her behaviour was (annoyed / annoying) <input class="fill-input">.</div>
+        <div class="exercise-item">7. I felt (embarrassed / embarrassing) <input class="fill-input"> when I forgot her name.</div>
+        <div class="exercise-item">8. The situation was (embarrassed / embarrassing) <input class="fill-input">.</div>
+        <div class="exercise-item">9. He is (excited / exciting) <input class="fill-input"> about the trip.</div>
+        <div class="exercise-item">10. The news was (excited / exciting) <input class="fill-input">.</div>
+      </div>
+    </div>
+
+    <!-- R7 -->
+    <div class="grammar-rule" id="r7">
+      <div class="rule-block">
+        <h2>7️⃣ Префиксы un-, in-, im-</h2>
+        <div class="rule">
+          <p><b>un-</b> — самый распространённый: unhappy, unreliable, unfriendly, unkind, unusual.</p>
+          <p><b>in-</b> — перед некоторыми согласными: incorrect, invisible, independent, informal.</p>
+          <p><b>im-</b> — перед p, b, m: impossible, impolite, impatient, immature.</p>
+          <p><b>il-</b> — перед l: illegal. <b>ir-</b> — перед r: irregular.</p>
+        </div>
+        <h3>Примеры:</h3>
+        <div class="example"><span class="en">He is very unreliable.</span><div class="ru">Он очень ненадёжный.</div></div>
+        <div class="example"><span class="en">She is impolite.</span><div class="ru">Она невежливая.</div></div>
+        <div class="example"><span class="en">It's impossible to do.</span><div class="ru">Это невозможно сделать.</div></div>
+        <div class="example"><span class="en">He is unhappy.</span><div class="ru">Он несчастлив.</div></div>
+        <h3>✍️ Упражнение 7. Образуй отрицательную форму.</h3>
+        <div class="exercise-item">1. kind → <input class="fill-input"></div>
+        <div class="exercise-item">2. reliable → <input class="fill-input"></div>
+        <div class="exercise-item">3. polite → <input class="fill-input"></div>
+        <div class="exercise-item">4. possible → <input class="fill-input"></div>
+        <div class="exercise-item">5. happy → <input class="fill-input"></div>
+        <div class="exercise-item">6. friendly → <input class="fill-input"></div>
+        <div class="exercise-item">7. patient → <input class="fill-input"></div>
+        <div class="exercise-item">8. correct → <input class="fill-input"></div>
+        <div class="exercise-item">9. usual → <input class="fill-input"></div>
+        <div class="exercise-item">10. honest → <input class="fill-input"></div>
+      </div>
+    </div>
+
+    <!-- R8 -->
+    <div class="grammar-rule" id="r8">
+      <div class="rule-block">
+        <h2>8️⃣ Глаголы-связки to be / look / feel / seem</h2>
+        <div class="rule">
+          <p>После глаголов-связок <b>be, look, feel, seem, smell, taste, sound</b> используется <b>прилагательное</b>, а не наречие, для описания состояния или качества.</p>
+          <p>Сравни: <i>She looks tired.</i> (прилагательное) — <i>She looked at me angrily.</i> (наречие, описывает действие)</p>
+        </div>
+        <h3>Примеры:</h3>
+        <div class="example"><span class="en">You look tired.</span><div class="ru">Ты выглядишь уставшим.</div></div>
+        <div class="example"><span class="en">I feel happy.</span><div class="ru">Я чувствую себя счастливым.</div></div>
+        <div class="example"><span class="en">She seems friendly.</span><div class="ru">Она кажется дружелюбной.</div></div>
+        <div class="example"><span class="en">The dinner smells delicious.</span><div class="ru">Ужин пахнет вкусно.</div></div>
+        <div class="example"><span class="en">He looks like his father.</span><div class="ru">Он похож на своего отца.</div></div>
+        <h3>✍️ Упражнение 8. Выбери правильную форму.</h3>
+        <div class="exercise-item">1. She looks (beautiful / beautifully) <input class="fill-input"> today.</div>
+        <div class="exercise-item">2. He feels (happy / happily) <input class="fill-input"> about his results.</div>
+        <div class="exercise-item">3. The soup tastes (good / well) <input class="fill-input">.</div>
+        <div class="exercise-item">4. She seems (polite / politely) <input class="fill-input">.</div>
+        <div class="exercise-item">5. He looked at me (angry / angrily) <input class="fill-input">.</div>
+        <div class="exercise-item">6. You look (tired / tiredly) <input class="fill-input">.</div>
+        <div class="exercise-item">7. She sings (beautiful / beautifully) <input class="fill-input">.</div>
+        <div class="exercise-item">8. He seems (friendly / friendlily) <input class="fill-input">.</div>
+        <div class="exercise-item">9. The flowers smell (sweet / sweetly) <input class="fill-input">.</div>
+        <div class="exercise-item">10. She feels (confident / confidently) <input class="fill-input"> about her appearance.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WORD BUILDING -->
+  <div class="tab-content" id="wordbuilding">
+    <div class="section">
+      <h2>🧩 Способы словообразования</h2>
+      <h3>1️⃣ Аффиксация</h3>
+      <div class="rule-block" style="border-top-color: #26de81; margin-bottom: 15px;">
+        <h4>🔹 Существительные:</h4>
+        <table class="gradable-table">
+          <tr><th>Суффикс</th><th>Значение</th><th>Пример</th></tr>
+          <tr><td>-er/-or</td><td>профессия, деятель</td><td>teacher, visitor</td></tr>
+          <tr><td>-ist</td><td>профессия</td><td>artist, scientist</td></tr>
+          <tr><td>-ness/-ity/-ance/-ence</td><td>абстрактные понятия</td><td>kindness, activity, performance</td></tr>
+          <tr><td>-ment/-tion/-sion</td><td>абстрактные понятия</td><td>development, discussion</td></tr>
+          <tr><td>-ship/-hood</td><td>состояние, отношение</td><td>friendship, childhood</td></tr>
+        </table>
+        <h4>🔹 Прилагательные:</h4>
+        <table class="gradable-table">
+          <tr><th>Суффикс</th><th>Значение</th><th>Пример</th></tr>
+          <tr><td>-ful/-less</td><td>наличие/отсутствие</td><td>careful, careless</td></tr>
+          <tr><td>-able/-ible</td><td>возможность</td><td>reliable, possible</td></tr>
+          <tr><td>-ive/-ous/-al/-ic</td><td>качество</td><td>creative, famous, traditional</td></tr>
+          <tr><td>-ed/-ing</td><td>чувства</td><td>annoyed, annoying</td></tr>
+        </table>
+        <h4>🔹 Наречия:</h4>
+        <p><b>-ly</b> — образ действия: carefully, politely, happily</p>
+        <h4>🔹 Отрицательные приставки:</h4>
+        <p><b>un-</b> (unhappy), <b>in-/im-/il-/ir-</b> (incorrect, impossible, illegal, irregular), <b>dis-</b> (dishonest)</p>
+      </div>
+
+      <h3>2️⃣ Словосложение</h3>
+      <p>friendship, housework, teenager, well-dressed</p>
+
+      <h3>3️⃣ Конверсия</h3>
+      <p>to chat — a chat, to support — support, to look — a look</p>
+
+      <h3>💡 Лайфхаки для ОГЭ</h3>
+      <div class="rule" style="background: #fff9e6; padding: 15px; border-radius: 10px; border-left: 5px solid #fdcb6e;">
+        <ul style="padding-left: 20px; line-height: 2;">
+          <li>После артикля или притяж. местоимения — существительное.</li>
+          <li>Перед существительным — прилагательное.</li>
+          <li>После be/look/feel/seem — прилагательное.</li>
+          <li>После глагола действия — наречие (-ly).</li>
+          <li>un-, in-, im-, dis- — отрицание.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section" style="border-left-color: #00cec9;">
+      <h2>✍️ Задание 1. (3FAAE8)</h2>
+      <p><b>Прочитайте текст и преобразуйте слова, напечатанные заглавными буквами, так, чтобы они грамматически и лексически соответствовали содержанию текста.</b></p>
+      <div class="exercise-item">
+        Sam went to the giant aquarium near his house at least three times a week. He liked the fish and crabs, but the most <input class="fill-input" placeholder="WONDER"> creatures there were sharks. Sam could watch them for hours. He took photos through the glass and collected <input class="fill-input" placeholder="INFORM"> about them. It surprised him how fast a massive shark could be. Before the aquarium opened, Sam thought it was <input class="fill-input" placeholder="POSSIBLE"> for sharks to be so quick and graceful. He knew that sharks were <input class="fill-input" placeholder="DANGER"> but they seldom attacked people. Many people, however, had hunted them and sharks had become endangered. <input class="fill-input" placeholder="FORTUNATE">, now there were laws protecting sharks. In the future, Sam wanted to be a <input class="fill-input" placeholder="SCIENCE"> and study sharks in the wild.
+      </div>
+    </div>
+
+    <div class="section" style="border-left-color: #20bf6b;">
+      <h2>✍️ Задание 2. (799112)</h2>
+      <p><b>Прочитайте текст и преобразуйте слова, напечатанные заглавными буквами, так, чтобы они грамматически и лексически соответствовали содержанию текста.</b></p>
+      <div class="exercise-item">
+        What is the most eco-friendly transport? I believe it's the bicycle. There are a lot of bicycles on the streets of our town and that is probably why it looks so green and <input class="fill-input" placeholder="BEAUTY">. There are cycle lanes all over the town so using your bike to get to school or to the office is safe and convenient. <input class="fill-input" placeholder="FORTUNATELY"> some people still prefer driving cars even for short distances. They make the environment less <input class="fill-input" placeholder="HEALTH">. As for me, I enjoy riding my bike very much and all my friends say that I'm a good <input class="fill-input" placeholder="RIDE">. Next month I'm going to take part in a regional cycling <input class="fill-input" placeholder="COMPETE"> and I hope to win it. I don't think I will stop riding my bicycle till I'm old.
+      </div>
+    </div>
+  </div>
+
+  <!-- WRITING -->
+  <div class="tab-content" id="writing">
+    <div class="section">
+      <h2>✉️ Справочный блок</h2>
+      <div class="rule-block" style="border-top-color: #26de81; margin-bottom: 20px;">
+        <h3>📋 Структура письма</h3>
+        <table class="gradable-table">
+          <tr><th>Часть</th><th>Что писать</th></tr>
+          <tr><td>1. Обращение</td><td>Dear Ben,</td></tr>
+          <tr><td>2. Благодарность</td><td>Thanks for your recent email. I was very glad to hear from you again!</td></tr>
+          <tr><td>3. Ответы на 3 вопроса</td><td>In your email you asked me about... Well, ...</td></tr>
+          <tr><td>4. Дальнейшие контакты</td><td>Write back soon.</td></tr>
+          <tr><td>5. Завершающая фраза</td><td>Best wishes,</td></tr>
+          <tr><td>6. Подпись</td><td>Kate</td></tr>
+        </table>
+
+        <h3>📎 Клише</h3>
+        <p><b>Обращение:</b> Dear Ben, / Hello Ben, / Hi Ben,</p>
+        <p><b>Благодарность:</b> Thanks for your recent email. / I was very glad to hear from you again.</p>
+        <p><b>Переход:</b> In your email you asked me about... / You asked me about... Well, I can say that...</p>
+        <p><b>Личное мнение:</b> Personally, ... / As for me, ... / Well, ...</p>
+        <p><b>Дальнейшие контакты:</b> Write back soon. / Keep in touch.</p>
+        <p><b>Завершающая фраза:</b> Best wishes, / All the best,</p>
+
+        <h3>⚠️ Правила</h3>
+        <ul style="padding-left: 20px; line-height: 2;">
+          <li>Объём: 100–120 слов (±10%). Если меньше 90 слов — 0 баллов.</li>
+          <li>Если в вопросе есть WHY — обязательно BECAUSE.</li>
+          <li>После like/enjoy/hate — V-ing.</li>
+          <li>Не переписывай From/To/Subject, дату и адрес.</li>
+          <li>Считаются все слова, включая артикли и предлоги.</li>
+        </ul>
+
+        <h3>🧩 Шаблон письма</h3>
+        <div class="example"><div class="en">Dear <b>________</b>,</div></div>
+        <div class="example"><div class="en">Thanks for your recent email. I was very glad to hear from you again!</div></div>
+        <div class="example"><div class="en">In your email you asked me about <b>________</b>. <b>Well</b>, <b>________</b>. <b>As for</b> <b>________</b>, <b>________</b>. <b>Personally</b>, <b>________</b>.</div></div>
+        <div class="example"><div class="en">That's all for now. Write back soon!</div></div>
+        <div class="example"><div class="en">Best wishes,<br><b>________</b></div></div>
+      </div>
+
+      <div class="email-card">
+        <h4>📧 1. Ann — My best friend</h4>
+        <div class="email-header"><strong>From:</strong> Ann@mail.uk<br><strong>To:</strong> Russian_friend@oge.ru<br><strong>Subject:</strong> My best friend...</div>
+        <p>… Oh, my friend is so charming! Everybody in the class is ready to help her. But, you know, I sometimes think she's just using people to get what she wants.</p>
+        <p>… What kind of person is your best friend? When and where did you meet? How do you spend time together? …</p>
+        <p style="margin-top: 10px;"><b>Write a message to Ann and answer her 3 questions. Write 100–120 words. Remember the rules of email writing.</b></p>
+        <textarea class="text-area-answer" placeholder="✍️ Напиши свой ответ здесь..."></textarea>
+      </div>
+
+      <div class="email-card" style="border-left-color: #00cec9;">
+        <h4>📧 2. Nick — School friends</h4>
+        <div class="email-header"><strong>From:</strong> Nick @mail.uk<br><strong>To:</strong> Russian_friend@oge.ru<br><strong>Subject:</strong> School friends...</div>
+        <p>We've moved house and now I have to go to a new school. It's a pity because I liked my old school and I had a lot of friends there.</p>
+        <p>… What do you like most about your school? Have you got a lot of friends at school? What do you usually do with your school friends in your free time? …</p>
+        <p style="margin-top: 10px;"><b>Write a message to Nick and answer his 3 questions.</b></p>
+        <textarea class="text-area-answer" placeholder="✍️ Напиши свой ответ здесь..."></textarea>
+      </div>
+
+      <div class="email-card" style="border-left-color: #fdcb6e;">
+        <h4>📧 3. Kate — Books</h4>
+        <div class="email-header"><strong>From:</strong> Kate@mail.uk<br><strong>To:</strong> Russian_friend@oge.ru<br><strong>Subject:</strong> Books...</div>
+        <p>I'm now reading an amazing book about Thomas Edison, one of the greatest inventors of all time.</p>
+        <p>… What kind of books do you enjoy? Would you like to write a book, and why or why not? What qualities are necessary for a good writer? …</p>
+        <p style="margin-top: 10px;"><b>Write a message to Kate and answer her 3 questions.</b></p>
+        <textarea class="text-area-answer" placeholder="✍️ Напиши свой ответ здесь..."></textarea>
+      </div>
+
+      <div class="email-card" style="border-left-color: #ff7675;">
+        <h4>📧 4. Ben — Clothes</h4>
+        <div class="email-header"><strong>From:</strong> Ben@mail.uk<br><strong>To:</strong> Russian_friend@oge.ru<br><strong>Subject:</strong> Clothes...</div>
+        <p>My mum always says, "There's no bad weather, there're bad clothes!" That's why she keeps telling me to put on warm clothes even in spring.</p>
+        <p>… Do you agree with the English proverb about bad weather and bad clothes, and why? What clothes do you prefer to wear out of school? What are your favourite colours for clothes? …</p>
+        <p style="margin-top: 10px;"><b>Write a message to Ben and answer his 3 questions.</b></p>
+        <textarea class="text-area-answer" placeholder="✍️ Напиши свой ответ здесь..."></textarea>
+      </div>
+
+      <div class="email-card" style="border-left-color: #a29bfe;">
+        <h4>📧 5. Ben — Theatre</h4>
+        <div class="email-header"><strong>From:</strong> Ben@mail.uk<br><strong>To:</strong> Russian_friend@oge.ru<br><strong>Subject:</strong> Theatre...</div>
+        <p>Last week I went to the theatre. It was a great performance and the actors were wonderful. I was impressed.</p>
+        <p>… Do you think it's exciting to be a famous actor and why? When did you last see a theatrical performance? Have you ever been to the Bolshoi Theatre? …</p>
+        <p style="margin-top: 10px;"><b>Write a message to Ben and answer his 3 questions.</b></p>
+        <textarea class="text-area-answer" placeholder="✍️ Напиши свой ответ здесь..."></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- REVIEW -->
+  <div class="tab-content" id="review">
+    <div class="section" style="border-left-color: #ff7675;">
+      <h2>🔄 Проверочная работа по блоку Б</h2>
+      <p><b>Время выполнения:</b> 30–40 минут &nbsp;|&nbsp; <b>Максимальный балл:</b> 40</p>
+    </div>
+
+    <div class="section" style="border-left-color: #26de81;">
+      <h3>Task 1. Vocabulary (10 points)</h3>
+      <p><b>Fill in the gaps with the words from the box. There is one extra word.</b></p>
+      <div class="rule" style="background: #fff9e6; padding: 12px; border-radius: 10px; border-left: 5px solid #fdcb6e; margin-bottom: 15px; font-weight: 600;">
+        reliable | shy | patient | honest | stubborn | hardworking | generous | confident | friendly | talented | appearance
+      </div>
+      <div class="exercise-item">1. My best friend is very <input class="fill-input">; she always does what she promises.</div>
+      <div class="exercise-item">2. He is a bit <input class="fill-input"> and doesn't like meeting new people.</div>
+      <div class="exercise-item">3. My sister is very <input class="fill-input">; she never gets angry when she has to wait.</div>
+      <div class="exercise-item">4. I think it's important to be <input class="fill-input"> and tell the truth.</div>
+      <div class="exercise-item">5. My brother is so <input class="fill-input"> that he never changes his mind.</div>
+      <div class="exercise-item">6. She is a very <input class="fill-input"> person; she always works hard and never gives up.</div>
+      <div class="exercise-item">7. He is very <input class="fill-input">; he always shares his things with me.</div>
+      <div class="exercise-item">8. She is very <input class="fill-input">; she believes in herself and her abilities.</div>
+      <div class="exercise-item">9. My friend is very <input class="fill-input">; she always smiles and talks to everyone.</div>
+      <div class="exercise-item">10. He is <input class="fill-input"> at playing the guitar; he can play any song.</div>
+    </div>
+
+    <div class="section" style="border-left-color: #00cec9;">
+      <h3>Task 2. Grammar (10 points)</h3>
+      <p><b>Choose the correct option.</b></p>
+      <div class="exercise-item">1. She bought a (beautiful round wooden / round beautiful wooden) <input class="fill-input"> table.</div>
+      <div class="exercise-item">2. He is (more tall / taller) <input class="fill-input"> than his father.</div>
+      <div class="exercise-item">3. She is (the most talented / most talented) <input class="fill-input"> student in the class.</div>
+      <div class="exercise-item">4. He is not (so strong as / as strong as) <input class="fill-input"> his brother.</div>
+      <div class="exercise-item">5. He works (hard / hardly) <input class="fill-input"> to achieve his goals.</div>
+      <div class="exercise-item">6. The lesson was (boring / bored) <input class="fill-input">.</div>
+      <div class="exercise-item">7. It's (impossible / unpossible) <input class="fill-input"> to finish this today.</div>
+      <div class="exercise-item">8. She (looks / looks like) <input class="fill-input"> tired.</div>
+      <div class="exercise-item">9. He speaks (more politely / politer) <input class="fill-input"> than before.</div>
+      <div class="exercise-item">10. She is a (careful / carefully) <input class="fill-input"> driver.</div>
+    </div>
+
+    <div class="section" style="border-left-color: #fdcb6e;">
+      <h3>Task 3. Word formation (10 points)</h3>
+      <p><b>Form the correct word from the capital.</b></p>
+      <div class="exercise-item">1. My best friend is very <input class="fill-input"> (FRIEND).</div>
+      <div class="exercise-item">2. She has a very strong <input class="fill-input"> (PERSONAL).</div>
+      <div class="exercise-item">3. His <input class="fill-input"> (BEHAVE) was very strange.</div>
+      <div class="exercise-item">4. I was <input class="fill-input"> (DISAPPOINT) with my results.</div>
+      <div class="exercise-item">5. She is a very <input class="fill-input"> (CREATE) person.</div>
+      <div class="exercise-item">6. It was an <input class="fill-input"> (FORGET) day.</div>
+      <div class="exercise-item">7. He is very <input class="fill-input"> (RELY).</div>
+      <div class="exercise-item">8. She spoke to me <input class="fill-input"> (POLITE).</div>
+      <div class="exercise-item">9. His <input class="fill-input"> (KIND) made everyone happy.</div>
+      <div class="exercise-item">10. The film was very <input class="fill-input"> (INTEREST).</div>
+    </div>
+
+    <div class="section" style="border-left-color: #55efc4;">
+      <h3>Task 4. Reading (5 points)</h3>
+      <p><b>Read the text and mark the statements True (T), False (F) or Not Stated (NS).</b></p>
+      <div class="reading-block" style="border-left-color: #55efc4;">
+        <p>Sherlock Holmes is one of the most famous fictional characters in the world. He was created by Sir Arthur Conan Doyle in the late 19th century. Holmes is known for his sharp mind and his ability to solve the most difficult crimes. He is tall and slim, with dark hair and piercing eyes. He always wears a hat and carries a magnifying glass. But Holmes is also a very unusual person. He is extremely clever, but he can be rude and impatient with people who are not as smart as him. His best friend, Dr Watson, is the opposite: kind, friendly and patient. Watson often helps Holmes in his investigations and writes down their adventures. Despite his strange character, Holmes has many fans all over the world.</p>
+      </div>
+      <div class="tfns-item"><p><b>1.</b> Sherlock Holmes was created in the 20th century.</p><div class="tfns-options"><button class="tfns-btn">True</button><button class="tfns-btn">False</button><button class="tfns-btn">Not Stated</button></div></div>
+      <div class="tfns-item"><p><b>2.</b> Holmes is described as tall and slim.</p><div class="tfns-options"><button class="tfns-btn">True</button><button class="tfns-btn">False</button><button class="tfns-btn">Not Stated</button></div></div>
+      <div class="tfns-item"><p><b>3.</b> Dr Watson is smarter than Holmes.</p><div class="tfns-options"><button class="tfns-btn">True</button><button class="tfns-btn">False</button><button class="tfns-btn">Not Stated</button></div></div>
+      <div class="tfns-item"><p><b>4.</b> Holmes is always polite to everyone.</p><div class="tfns-options"><button class="tfns-btn">True</button><button class="tfns-btn">False</button><button class="tfns-btn">Not Stated</button></div></div>
+      <div class="tfns-item"><p><b>5.</b> Watson writes down their adventures.</p><div class="tfns-options"><button class="tfns-btn">True</button><button class="tfns-btn">False</button><button class="tfns-btn">Not Stated</button></div></div>
+    </div>
+
+    <div class="section" style="border-left-color: #a29bfe;">
+      <h3>Task 5. Writing (5 points)</h3>
+      <p><b>Write 5–6 sentences about your best friend. Use the following words:</b> friendly, reliable, sense of humour, tall, patient, enjoy.</p>
+      <textarea class="text-area-answer" placeholder="✍️ Напиши свой ответ здесь..." style="min-height: 150px;"></textarea>
+    </div>
+
+    <div class="section" style="border-left-color: #fdcb6e;">
+      <h3>📊 Критерии оценивания</h3>
+      <table class="gradable-table">
+        <tr><th>Баллы</th><th>Оценка</th></tr>
+        <tr><td>36–40</td><td>«5»</td></tr>
+        <tr><td>28–35</td><td>«4»</td></tr>
+        <tr><td>20–27</td><td>«3»</td></tr>
+        <tr><td>менее 20</td><td>требуется повторение</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- CHECKLIST -->
+  <div class="tab-content" id="checklist">
+    <div class="cl-header">
+      <div class="emojis">💚 🌿 ⭐ 🌱 💚 🌿 ⭐</div>
+      <h2>ЧЕК-ЛИСТ ПО БЛОКУ Б</h2>
+      <div class="sub">Внешность и характер человека (литературного персонажа)</div>
+      <div class="sub" style="color:#20bf6b; margin-top:4px;">Ты на финишной прямой! Отмечай каждый шаг — и блок покорён 🚀</div>
+    </div>
+
+    <div class="cl-section lex">
+      <h3>📚 Лексика</h3>
+      <div class="cl-item"><span class="mark">⬜</span> Изучил(а) существительные по теме «Внешность и характер»</div>
+      <div class="cl-item"><span class="mark">⬜</span> Изучил(а) прилагательные для описания внешности и характера</div>
+      <div class="cl-item"><span class="mark">⬜</span> Изучил(а) глаголы и фразовые глаголы по теме</div>
+      <div class="cl-item"><span class="mark">⬜</span> Изучил(а) наречия и фразы для описания внешности и характера</div>
+      <div class="cl-item"><span class="mark">⬜</span> Отработал(а) лексику в квизлет-карточках</div>
+      <div class="cl-item"><span class="mark">⬜</span> Составил(а) собственные предложения с новыми словами</div>
+    </div>
+
+    <div class="cl-section listen">
+      <h3>🎧 Аудирование и видео</h3>
+      <div class="cl-item"><span class="mark">⬜</span> Посмотрел(а) видео от носителя по теме</div>
+      <div class="cl-item"><span class="mark">⬜</span> Обсудил(а) видео и ответил(а) на вопросы</div>
+      <div class="cl-item"><span class="mark">⬜</span> Выполнил(а) задания на аудирование из Prepare 4/5</div>
+      <div class="cl-item"><span class="mark">⬜</span> Слушал(а) речь носителей в формате экзаменационных заданий</div>
+    </div>
+
+    <div class="cl-section read">
+      <h3>📖 Чтение и упражнения</h3>
+      <div class="cl-item"><span class="mark">⬜</span> Прочитал(а) авторский текст по теме блока</div>
+      <div class="cl-item"><span class="mark">⬜</span> Нашёл(а) в тексте новые слова и знакомую грамматику</div>
+      <div class="cl-item"><span class="mark">⬜</span> Выполнил(а) упражнения к тексту (заголовки, True/False/Not Stated)</div>
+      <div class="cl-item"><span class="mark">⬜</span> Прочитал(а) текст вслух</div>
+      <div class="cl-item"><span class="mark">⬜</span> Выполнил(а) упражнения на словообразование</div>
+      <div class="cl-item"><span class="mark">⬜</span> Прочитал(а) текст из банка заданий ОГЭ</div>
+    </div>
+
+    <div class="cl-section speak">
+      <h3>🎭 Говорение</h3>
+      <div class="cl-item"><span class="mark">⬜</span> Отыграл(а) свою роль в ролевой игре</div>
+      <div class="cl-item"><span class="mark">⬜</span> Принял(а) участие в интервью из банка заданий</div>
+      <div class="cl-item"><span class="mark">⬜</span> Подготовил(а) монолог по теме блока</div>
+      <div class="cl-item"><span class="mark">⬜</span> Спел(а) песню на английском языке</div>
+    </div>
+
+    <div class="cl-section write">
+      <h3>✉️ Письмо</h3>
+      <div class="cl-item"><span class="mark">⬜</span> Написал(а) письмо другу по теме блока</div>
+    </div>
+
+    <div class="cl-section gram">
+      <h3>📝 Грамматика</h3>
+      <div class="cl-gram-grid">
+        <div>
+          <div class="cl-item"><span class="mark">⬜</span> Порядок прилагательных</div>
+          <div class="cl-item"><span class="mark">⬜</span> Степени сравнения прилагательных</div>
+          <div class="cl-item"><span class="mark">⬜</span> Исключения: good, bad, far, little, many/much, old</div>
+          <div class="cl-item"><span class="mark">⬜</span> Двусложные с двумя способами (clever, narrow, quiet, simple, friendly)</div>
+          <div class="cl-item"><span class="mark">⬜</span> Конструкции as... as, not so... as</div>
+          <div class="cl-item"><span class="mark">⬜</span> Наречия: степени сравнения</div>
+        </div>
+        <div>
+          <div class="cl-item"><span class="mark">⬜</span> Наречия, совпадающие с прилагательными (fast, hard, late, early)</div>
+          <div class="cl-item"><span class="mark">⬜</span> Прилагательные на -ed / -ing</div>
+          <div class="cl-item"><span class="mark">⬜</span> Отрицательные префиксы un-, in-, im-</div>
+          <div class="cl-item"><span class="mark">⬜</span> Глаголы-связки to be / look / feel / seem</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cl-finish">
+      <div class="top">🏆 ТЫ СПРАВИЛСЯ(АСЬ) С БЛОКОМ Б!</div>
+      <div class="bottom">Каждый день — шаг к большой цели. Твой труд и упорство творят чудеса 💚✨</div>
+    </div>
+  </div>
+
+  <!-- HOMEWORK -->
+  <div class="tab-content" id="homework">
+    <div class="section">
+      <h2>📂 Материалы для домашки</h2>
+      <p>Задания из открытого банка ОГЭ для дополнительной тренировки.</p>
+    </div>
+
+    <div class="hw-sub-tabs">
+      <div class="hw-sub-tab active" data-hw="hw-listen">🎧 Аудирование</div>
+      <div class="hw-sub-tab" data-hw="hw-read">📖 Чтение</div>
+      <div class="hw-sub-tab" data-hw="hw-gram">📝 Грамматика</div>
+      <div class="hw-sub-tab" data-hw="hw-word">🧩 Словообразование</div>
+    </div>
+
+    <!-- HW LISTENING -->
+    <div class="hw-content active" id="hw-listen">
+      <!-- AUDIO 1: 6B82FA -->
+      <div class="section" style="border-left-color: #26de81;">
+        <h3>🎧 Audio 1 (6B82FA)</h3>
+        <div class="media-block audio">
+          <div class="media-label">🔊 Аудио 1</div>
+          <iframe src="https://drive.google.com/file/d/1v7PhAN_W3_t7TjAPQJkvCjmLl1zP0AAH/preview" allow="autoplay"></iframe>
+        </div>
+
+        <h4 style="color:#1e7a4c; margin-top:20px;">Task 1-4. Multiple choice</h4>
+        <div class="exercise-item">1. The new facility the guests of the hotel can enjoy this season is<br>1) an eco-farm with domestic animals. 2) a new swimming pool. 3) a garden with tropical plants. <input class="fill-input" placeholder="№"></div>
+        <div class="exercise-item">2. Amanda is going to celebrate her birthday on<br>1) Friday. 2) Saturday. 3) Sunday. <input class="fill-input" placeholder="№"></div>
+        <div class="exercise-item">3. What present has the man decided to buy for his nephew?<br>1) A set of Lego. 2) A set of paints. 3) A skateboard. <input class="fill-input" placeholder="№"></div>
+        <div class="exercise-item">4. What is James good at?<br>1) Foreign languages. 2) Writing poems. 3) Roller skating. <input class="fill-input" placeholder="№"></div>
+
+        <h4 style="color:#1e7a4c; margin-top:20px;">Task 5. Подбор рубрик (695F67)</h4>
+        <p>Подберите к каждому высказыванию рубрику из списка 1–6. Одна лишняя.</p>
+        <div class="rule-block" style="border-top-color: #26de81;">
+          <p>1. It's unhealthy &nbsp;|&nbsp; 2. It's boring &nbsp;|&nbsp; 3. It offers better jobs &nbsp;|&nbsp; 4. It's amazing &nbsp;|&nbsp; 5. It's educational &nbsp;|&nbsp; 6. It's stressful</p>
+        </div>
+        <div class="exercise-item">A <input class="fill-input" placeholder="№"></div>
+        <div class="exercise-item">B <input class="fill-input" placeholder="№"></div>
+        <div class="exercise-item">C <input class="fill-input" placeholder="№"></div>
+        <div class="exercise-item">D <input class="fill-input" placeholder="№"></div>
+        <div class="exercise-item">E <input class="fill-input" placeholder="№"></div>
+
+        <h4 style="color:#1e7a4c; margin-top:20px;">Task 6. Заполни таблицу</h4>
+        <div class="exercise-item">Age of the respondent: <input class="fill-input"></div>
+        <div class="exercise-item">Regular sports activity: <input class="fill-input"></div>
+        <div class="exercise-item">Favourite food: <input class="fill-input"></div>
+        <div class="exercise-item">Country of birth: <input class="fill-input"></div>
+        <div class="exercise-item">Current job: <input class="fill-input"></div>
+        <div class="exercise-item">Hobby: <input class="fill-input"></div>
+      </div>
+
+      <!-- AUDIO 2: 2B5709 -->
+      <div class="section" style="border-left-color: #00cec9;">
+        <h3>🎧 Audio 2 (2B5709)</h3>
+        <div class="media-block audio">
+          <div class="media-label">🔊 Аудио 2</div>
+          <iframe src="https://drive.google.com/file/d/1ZuM7u0b5dEMhc27D223gVxTfIBWE7MZx/preview" allow="autoplay"></iframe>
+        </div>
+
+        <h4 style="color:#1e7a4c; margin-top:20px;">Task 1-4. Multiple choice</h4>
+        <div class="exercise-item">1. The excursion guide asks the tourists to ...<br>1) collect their bags from the bus. 2) take their lunch boxes. 3) board the bus. <input class="fill-input" placeholder="№"></div>
+        <div class="exercise-item">2. Bob wants Tom to<br>1) invite him to the musical show. 2) lend him his guitar for a while. 3) take part in the school performance. <input class="fill-input" placeholder="№"></div>
+        <div class="exercise-item">3. What school subject does Jeff find most difficult?<br>1) Science. 2) French. 3) Computer Studies. <input class="fill-input" placeholder="№"></div>
+        <div class="exercise-item">4. Tomorrow, Sue is going to<br>1) relax at home. 2) go to the swimming pool. 3) visit a doctor. <input class="fill-input" placeholder="№"></div>
+
+        <h4 style="color:#1e7a4c; margin-top:20px;">Task 5. Подбор рубрик (340853)</h4>
+        <p>Подберите к каждому высказыванию рубрику из списка 1–6. Одна лишняя.</p>
+        <div class="rule-block" style="border-top-color: #00cec9;">
+          <p>1. It's unhealthy &nbsp;|&nbsp; 2. It's easy to buy &nbsp;|&nbsp; 3. It's varied &nbsp;|&nbsp; 4. It's expensive &nbsp;|&nbsp; 5. It's useful &nbsp;|&nbsp; 6. It gives energy</p>
+        </div>
+        <div class="exercise-item">A <input class="fill-input" placeholder="№"></div>
+        <div class="exercise-item">B <input class="fill-input" placeholder="№"></div>
+        <div class="exercise-item">C <input class="fill-input" placeholder="№"></div>
+        <div class="exercise-item">D <input class="fill-input" placeholder="№"></div>
+        <div class="exercise-item">E <input class="fill-input" placeholder="№"></div>
+
+        <h4 style="color:#1e7a4c; margin-top:20px;">Task 6. Заполни таблицу</h4>
+        <div class="exercise-item">Current job: <input class="fill-input"></div>
+        <div class="exercise-item">Number of countries he/she visited: <input class="fill-input"></div>
+        <div class="exercise-item">The foreign language he/she speaks: <input class="fill-input"></div>
+        <div class="exercise-item">City of birth: <input class="fill-input"></div>
+        <div class="exercise-item">Favourite drink: <input class="fill-input"></div>
+        <div class="exercise-item">Regular sports activity: <input class="fill-input"></div>
+      </div>
+    </div>
+
+    <!-- HW READING -->
+    <div class="hw-content" id="hw-read">
+      <!-- TASK 1: Mobile phones -->
+      <div class="section" style="border-left-color: #26de81;">
+        <h3>📖 Reading (headings) — Mobile phones</h3>
+        <p><b>Determine which of the texts A–F contains answers to your questions 1–7. One question will remain unanswered. Put your answers in the table.</b></p>
+
+        <div class="rule-block" style="border-top-color: #26de81;">
+          <h4>Questions:</h4>
+          <ol style="padding-left: 20px; line-height: 1.9;">
+            <li>Young people of which country are the fastest at texting?</li>
+            <li>Who made the first mobile call and why?</li>
+            <li>Are the rules of using phones in school always followed by students?</li>
+            <li>Which mobile phone has no other advantages but glamour?</li>
+            <li>Why can a mobile phone be dangerous for children?</li>
+            <li>What are the safety tips for using mobile phones?</li>
+            <li>How can a mobile phone message save your life?</li>
+          </ol>
+        </div>
+
+        <div class="reading-block" style="border-left-color: #26de81; margin-top: 20px;">
+          <p><b>A.</b> The first call from a mobile phone was made in 1973. Motorola engineer Martin Cooper made the call from the pavement of Sixth Avenue in New York to show off to his competitor – engineer Joel Angel. He said, "I'm ringing you just to see if my call sounds good at your end." With the first mobile phones, only voice calls were available and there was no texting facility.</p>
+        </div>
+        <div class="reading-block" style="border-left-color: #00cec9;">
+          <p><b>B.</b> Recently the most expensive phone in the world was presented. It is the iPhone 5 with a case made of 24 carat gold with 600 diamonds! The home button of the smartphone is made of a rare black diamond and the company logo is covered with small diamonds. The cost of this device is about $15 million. The technical characteristics of the iPhone 5 are no different from the regular models.</p>
+        </div>
+        <div class="reading-block" style="border-left-color: #fdcb6e;">
+          <p><b>C.</b> Mobile phones are permitted at school in the UK, but students are not allowed to use them in class. Teachers can take away phones if these rules are broken. School students can use their phones at breaktime and at lunchtime. However, some teachers in British schools complain that students don't always follow the rules and that lessons are disrupted by people texting, receiving calls, looking at social networking sites, watching videos and even making videos in class.</p>
+        </div>
+        <div class="reading-block" style="border-left-color: #ff7675;">
+          <p><b>D.</b> The mobile phone is a way to warn people about disasters. Some countries have worked out the following system: phone companies automatically notify their population in advance about emergencies and disasters. Such warnings are very efficient and free of charge. Japan and Finland were among the first countries that understood the necessity of this system.</p>
+        </div>
+        <div class="reading-block" style="border-left-color: #a29bfe;">
+          <p><b>E.</b> Parents want their kids to be safe. Are children safer with a mobile phone or without? Many parents want their children to have a phone so that they can be in contact at any time or in any place. On the other hand, for lots of parents a phone is a source of possible danger. Parents worry that their child may meet the wrong kind of 'friends' on social networking sites or that they might receive cruel messages from school bullies.</p>
+        </div>
+        <div class="reading-block" style="border-left-color: #20bf6b;">
+          <p><b>F.</b> The idea of sending short text messages originated in 1984. It was later brought to life by a group of engineers from different companies. Writing text messages became extremely popular in Asian countries, especially in Korea. Korean teenagers are certainly text message fans. They send over 200,000 text messages a year – that's more than sixty texts per day. This hobby must have made their fingers really fast.</p>
+        </div>
+
+        <table class="answer-table">
+          <tr><th>Text</th><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th></tr>
+          <tr><td><b>Question</b></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+        </table>
+      </div>
+
+      <!-- TASK 2: London -->
+      <div class="section" style="border-left-color: #00cec9;">
+        <h3>📖 Reading (headings) — London</h3>
+        <p><b>Determine which of the texts A–F contains answers to your questions 1–7. One question will remain unanswered. Put your answers in the table.</b></p>
+
+        <div class="rule-block" style="border-top-color: #00cec9;">
+          <h4>Questions:</h4>
+          <ol style="padding-left: 20px; line-height: 1.9;">
+            <li>Which place in London keeps a message for future generations?</li>
+            <li>Which place in London is good to watch sports and buy related goods?</li>
+            <li>How long does it take to raise the famous bridge for a ship?</li>
+            <li>How does a fairytale character help real people of London?</li>
+            <li>Which London bridge got a nickname after its reconstruction?</li>
+            <li>What is the most visited tourist attraction in London?</li>
+            <li>What were the false buildings in London made for?</li>
+          </ol>
+        </div>
+
+        <div class="reading-block" style="border-left-color: #26de81; margin-top: 20px;">
+          <p><b>A.</b> Tower Bridge, which is over a hundred years old, has become a symbol of London. It is the only bridge on the Thames that can be raised and lowered to allow ships to pass. Nowadays it takes only 90 seconds for the heavy drawbridges to be pulled up with electric motors. It is considered that watching the Tower Bridge opening brings good luck.</p>
+        </div>
+        <div class="reading-block" style="border-left-color: #00cec9;">
+          <p><b>B.</b> Waterloo Bridge is a foot traffic bridge crossing the River Thames in London. It was opened in 1817, on the second anniversary of the famous battle. A century later, in the early 1940s, the famous Bridge needed to be rebuilt. It was during World War II, and most men were away fighting. So the bridge was rebuilt mainly by women. The new Waterloo Bridge was opened in 1945 and got a second name, the 'Ladies Bridge'.</p>
+        </div>
+        <div class="reading-block" style="border-left-color: #fdcb6e;">
+          <p><b>C.</b> Wembley Stadium is a football stadium located in Wembley Park, London. The stadium is home not only to football. It also hosts concerts, rugby games and American football games. There is Wembley Market not far from the stadium. Unlike many London street markets, this one is situated in an open space. A visit here is a good option for football fans to find club T-shirts, boots or accessories.</p>
+        </div>
+        <div class="reading-block" style="border-left-color: #ff7675;">
+          <p><b>D.</b> 23 and 24 Leinster Gardens in Paddington (just opposite Hyde Park) are fake houses built to hide the Tube line running underneath. The windows are painted on, there are no letter boxes, and behind the facade there is a railway. The first London underground trains were steam trains so they needed ventilation. Underground lines were planned with tunnels and open-air sections so the trains could let out their steam and smoke, and that is what the house facades are hiding.</p>
+        </div>
+        <div class="reading-block" style="border-left-color: #a29bfe;">
+          <p><b>E.</b> Great Ormond Street Hospital, which is situated at Russell Square, London, owns the copyright to Peter Pan, a story written by J.M. Barrie. The author had no children himself and gifted the rights to his famous literary pieces to the hospital in 1929. The hospital receives royalties from all films, cartoons and performances of Peter Pan. All the money is used to run the hospital.</p>
+        </div>
+        <div class="reading-block" style="border-left-color: #20bf6b;">
+          <p><b>F.</b> Cleopatra's Needle was brought to London in 1878 from Alexandria, the royal city of Cleopatra. Underneath Cleopatra's Needle there's a time capsule. It keeps information about 19th century life. It contains copies of the Bible in several languages, a portrait of Queen Victoria, a set of British coins, cigars, a razor, a map of London, copies of 10 daily newspapers and pictures of the 12 best-looking English women of the day.</p>
+        </div>
+
+        <table class="answer-table">
+          <tr><th>Text</th><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th></tr>
+          <tr><td><b>Question</b></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+        </table>
+      </div>
+
+      <!-- TASK 3: Eton - T/F/NS -->
+      <div class="section" style="border-left-color: #fdcb6e;">
+        <h3>📖 Reading (T/F/NS) — Eton College</h3>
+        <p><b>Read the text and decide if the statements are True (1), False (2) or Not Stated (3).</b></p>
+
+        <div class="reading-block" style="border-left-color: #fdcb6e;">
+          <p>Within a ten minute walk of Windsor Castle, across a bridge over the River Thames, there's an old Gothic building. It is the legendary Eton College. It is one of England's largest independent schools and one of the highest in prestige. Members of the British royal family are traditionally educated here. It was one of the best schools when first founded and remains so now; it is still commonly known as one of the greatest schools among all the schools in the world.</p>
+          <p>Following the old tradition, Eton is a full boarding school, which means all students live and study at the school with their fellow students throughout the school year. Eton is also one of the four remaining boys' schools, so there's no opportunity for a girl to study there. Eton students traditionally come from England's wealthiest and most prestigious families, many of them aristocratic. Boys enter Eton at about 13 and continue to study there until they are ready to enter university.</p>
+          <p>The school was founded by Henry VI in the fifteenth century to provide free education for poor pupils who would then go on to get a higher education at King's College in Cambridge. That connection no longer exists today.</p>
+          <p>All students have a uniform of a black tailcoat and a waistcoat, a white collar and dark trousers. All students wear a white tie. This uniform is not for special occasions, it is worn at all times for all classes. If you visit Eton during term time, you will see students walking along the streets with books under their arms dressed in their uniforms.</p>
+          <p>At Eton, there are dozens of organisations known as 'societies', in many of which students come together to discuss a particular topic. The societies are traditionally governed by the boys themselves. Societies range from astronomy to Scottish dancing and stamp-collecting. Some of them are dedicated to music, some to arts, some to languages, and so on. Meetings are usually held after supper and often include a guest speaker. Among past guest speakers were composer Andrew Lloyd Webber, designer Vivienne Westwood, and actor Ralph Fiennes.</p>
+          <p>One of the oldest and most influential Eton societies is called the Pop. Its members are like school head-boys or prefects who are given limited authority over other students. They are called Poppers and take an active part in many official events of the school year, including parents' evenings. While all students wear black waistcoats, members of the Pop are allowed to wear any waistcoat they please. Prince William, when he was a Popper, wore a waistcoat designed like the British national flag. The style immediately became popular.</p>
+          <p>Irrespective of this, the official colour of the college is the so-called 'Eton blue'. It's a light blue-green colour which has been used since the early 19th century. The main purpose was to identify Eton sportsmen in rowing races and on the cricket field.</p>
+        </div>
+
+        <div class="tfns-item"><p><b>1.</b> Eton is the oldest boarding school in Great Britain.</p><div class="tfns-options"><button class="tfns-btn">True</button><button class="tfns-btn">False</button><button class="tfns-btn">Not Stated</button></div></div>
+        <div class="tfns-item"><p><b>2.</b> In our time, girls are allowed to enter Eton College.</p><div class="tfns-options"><button class="tfns-btn">True</button><button class="tfns-btn">False</button><button class="tfns-btn">Not Stated</button></div></div>
+        <div class="tfns-item"><p><b>3.</b> Eton College was established to educate the children from the wealthiest British families.</p><div class="tfns-options"><button class="tfns-btn">True</button><button class="tfns-btn">False</button><button class="tfns-btn">Not Stated</button></div></div>
+        <div class="tfns-item"><p><b>4.</b> The Eton uniform is sold only in one shop on the territory of the college.</p><div class="tfns-options"><button class="tfns-btn">True</button><button class="tfns-btn">False</button><button class="tfns-btn">Not Stated</button></div></div>
+        <div class="tfns-item"><p><b>5.</b> Many famous people have taken part in the work of the student societies.</p><div class="tfns-options"><button class="tfns-btn">True</button><button class="tfns-btn">False</button><button class="tfns-btn">Not Stated</button></div></div>
+        <div class="tfns-item"><p><b>6.</b> It is easy to identify Poppers in a crowd of students due to their clothes.</p><div class="tfns-options"><button class="tfns-btn">True</button><button class="tfns-btn">False</button><button class="tfns-btn">Not Stated</button></div></div>
+        <div class="tfns-item"><p><b>7.</b> The official colour of Eton College is white.</p><div class="tfns-options"><button class="tfns-btn">True</button><button class="tfns-btn">False</button><button class="tfns-btn">Not Stated</button></div></div>
+      </div>
+
+      <!-- TASK 4: Potatoes - T/F/NS -->
+      <div class="section" style="border-left-color: #ff7675;">
+        <h3>📖 Reading (T/F/NS) — Potatoes</h3>
+        <p><b>Read the text and decide if the statements are True (1), False (2) or Not Stated (3).</b></p>
+
+        <div class="reading-block" style="border-left-color: #ff7675;">
+          <p>The potato comes from the high and cool areas of the Andes of Peru. It began to be grown as food more than 7,000 years ago. When Europeans came to South America, they took the potato back to Europe.</p>
+          <p>In 1589, Sir Walter Raleigh, an English explorer and historian known for his expeditions to the Americas, first brought the potato to Ireland and planted the new vegetable there. In spite of the fact that the potatoes grew very well in the poor soil of Ireland, it took nearly 200 years for them to become a widely grown crop in Ireland and Great Britain. People didn't like its unusual appearance and originally bitter taste. Besides, the potato was not mentioned in the Bible and it was often associated with the devil.</p>
+          <p>According to legend, Sir Walter Raleigh presented potato plants to Queen Elizabeth I. A special royal potato dinner was made and the noble men were invited to taste the new American vegetable. But the royal cooks didn't know how to cook potatoes: they cut off and threw away the ugly-looking tubers and brought to the royal table a dish of boiled leaves (which are very poisonous). Most of the guests died after that royal dinner and potatoes were forbidden for many years.</p>
+          <p>Only two hundred years later farmers in Great Britain and Ireland began growing potatoes. Soon the rest of Europe started to follow Britain. The only country which did not accept potatoes was France. To overcome the negative attitude of the French people towards the new vegetable, King Louis XVI started to wear a potato flower as a decoration. He tried to make the people understand the benefit of potatoes as food. Even after the French king had given an order to his citizens to grow potatoes, they still were against the unfamiliar vegetable. The farmers refused to eat potatoes because of its unusual smell and taste. Then King Louis XVI decided to trick his people. In order to show the value of the potato, the king ordered to have it planted in a royal field and put guards to watch over the field. When the local farmers saw the guards at the royal field, they decided that the thing so carefully guarded must be valuable. One day, the guards were allowed to go off duty. The local farmers went into the field, dug out some potatoes and planted them in their fields. The king's plan was a success. From this small start, the habit of growing and eating potatoes spread all over the country.</p>
+          <p>As Europeans began to grow potatoes, they realized the advantages of the new vegetable. The potato harvest was enough to feed their own families and to sell some to the citizens of towns and cities. The new food stimulated the development of cities and industries. Besides, the health of the people improved as they included potatoes in their diets. Now the potato is grown and enjoyed everywhere.</p>
+        </div>
+
+        <div class="tfns-item"><p><b>1.</b> Potatoes were the basic food for the people of Peru.</p><div class="tfns-options"><button class="tfns-btn">True</button><button class="tfns-btn">False</button><button class="tfns-btn">Not Stated</button></div></div>
+        <div class="tfns-item"><p><b>2.</b> The British people liked potatoes at once.</p><div class="tfns-options"><button class="tfns-btn">True</button><button class="tfns-btn">False</button><button class="tfns-btn">Not Stated</button></div></div>
+        <div class="tfns-item"><p><b>3.</b> The potato dish for the royal dinner was prepared in a wrong way.</p><div class="tfns-options"><button class="tfns-btn">True</button><button class="tfns-btn">False</button><button class="tfns-btn">Not Stated</button></div></div>
+        <div class="tfns-item"><p><b>4.</b> King Louis XVI was against the idea of growing potatoes for food.</p><div class="tfns-options"><button class="tfns-btn">True</button><button class="tfns-btn">False</button><button class="tfns-btn">Not Stated</button></div></div>
+        <div class="tfns-item"><p><b>5.</b> French farmers stole some potatoes from the King's field.</p><div class="tfns-options"><button class="tfns-btn">True</button><button class="tfns-btn">False</button><button class="tfns-btn">Not Stated</button></div></div>
+        <div class="tfns-item"><p><b>6.</b> The potato helped the development of the European countries.</p><div class="tfns-options"><button class="tfns-btn">True</button><button class="tfns-btn">False</button><button class="tfns-btn">Not Stated</button></div></div>
+        <div class="tfns-item"><p><b>7.</b> Nowadays the potato is the most popular vegetable in Europe.</p><div class="tfns-options"><button class="tfns-btn">True</button><button class="tfns-btn">False</button><button class="tfns-btn">Not Stated</button></div></div>
+      </div>
+    </div>
+
+    <!-- HW GRAMMAR -->
+    <div class="hw-content" id="hw-gram">
+      <div class="section" style="border-left-color: #26de81;">
+        <h3>📝 C465FA</h3>
+        <div class="exercise-item">Dad usually comes up with original ideas. Last Sunday Dad <input class="fill-input" placeholder="DECIDE"> that we should all go on a camping trip. The idea came to him while he <input class="fill-input" placeholder="READ"> an article about camping. The article said that camping brings families together. "Not true", I smiled. "What about television? It usually <input class="fill-input" placeholder="HELP"> to feel a lot more united." "If the weather is fine, we <input class="fill-input" placeholder="GO"> on a trip next weekend," Dad said and put his magazine on the coffee table. I quickly looked over at my <input class="fill-input" placeholder="YOUNG"> brother, Paul. He gave me a knowing smile, "Do you remember <input class="fill-input" placeholder="WE"> last trip?" I certainly did. Last summer Dad told us that fishing would be a great family activity. We bought four expensive fishing rods and drove for three long hours to a big lake in Virginia. When we got there, we discovered that we <input class="fill-input" placeholder="FORGET"> to take the fishing rods. Ten minutes later we made another unpleasant discovery: we <input class="fill-input" placeholder="NOT/HAVE"> the tent which meant we couldn't stay overnight and we had to drive all the way back home again. We <input class="fill-input" placeholder="BE"> tired and disappointed with the trip.</div>
+      </div>
+
+      <div class="section" style="border-left-color: #00cec9;">
+        <h3>📝 Camping in Bristol</h3>
+        <div class="exercise-item">A few years ago I was on a camping holiday in Bristol. There <input class="fill-input" placeholder="BE"> lots of other girls from around the UK, but I was the only one from Scotland. The camp <input class="fill-input" placeholder="LOCATE"> in the woods, not far from the river. The camp life was even <input class="fill-input" placeholder="INTERESTING"> than I had expected. We enjoyed all kinds of camping activities – sports and games, different shows and contests. Everything was fine apart from one incident that took me aback. Once, at lunchtime, when I <input class="fill-input" placeholder="EAT"> ice cream, one of the girls asked: "So, do you have ice cream in Scotland?" I <input class="fill-input" placeholder="NOT/KNOW"> how to react. My neighbour repeated her question. I nodded, "Yes." My answer provoked a wave of absurd questions about my country: "Have you ever seen a ghost in your castle?" "Do all Scottish <input class="fill-input" placeholder="MAN"> wear checked skirts?" I <input class="fill-input" placeholder="FIND"> out that some people believe silly stereotypes about Scotland. They believe that Scots really carry bagpipes in <input class="fill-input" placeholder="THEY"> bags to play the instrument on the streets, and that Scots practise magic. At last, the girls said that they <input class="fill-input" placeholder="COME"> to Scotland one day to see it with their own eyes and to separate the truth from the myths.</div>
+      </div>
+
+      <div class="section" style="border-left-color: #fdcb6e;">
+        <h3>📝 FDCFF99</h3>
+        <div class="exercise-item">Paul was going to be late for his morning class again. He <input class="fill-input" placeholder="NOT/UNDERSTAND"> why it happened to him so often. This was going to be the <input class="fill-input" placeholder="THREE"> time in one week and that was too much even for Mrs Pitt. She was the <input class="fill-input" placeholder="KIND"> teacher in the world but Paul wasn't sure that she would forgive him again. "If I don't invent a very good excuse, she <input class="fill-input" placeholder="CALL"> my parents." Paul thought. His parents <input class="fill-input" placeholder="NOT BE"> very strict people but they didn't approve of Paul's habit of playing computer games till late at night. As a result, he couldn't make himself get up in the morning and <input class="fill-input" placeholder="BE"> regularly late for school. Paul quietly opened the door and <input class="fill-input" placeholder="GO"> into the classroom. His classmates <input class="fill-input" placeholder="WRITE"> something in their notepads and didn't pay any attention to him. Mrs Pitt looked at him and said in a flat voice: "You are late again, Paul. What <input class="fill-input" placeholder="HAPPEN">?" Paul was not ready with an answer.</div>
+      </div>
+
+      <div class="section" style="border-left-color: #ff7675;">
+        <h3>📝 8A55F8</h3>
+        <div class="exercise-item">Anna was glad that the academic year was about to finish. Like most <input class="fill-input" placeholder="CHILD"> she was looking forward to the summer but not because she wanted to relax. Her plans <input class="fill-input" placeholder="BE"> ambitious. Anna wanted to buy a professional digital camera and it wasn't easy to save enough money. Anna had already chosen the model she wanted. Her dad said that he <input class="fill-input" placeholder="GIVE"> her the camera in a couple of years. But Anna <input class="fill-input" placeholder="NOT/CAN"> wait so long, she needed it right then. "If I <input class="fill-input" placeholder="HAVE"> it now, I would be able to take part in the Professional Photograph Competition. Everyone says I've got talent," she said to herself, looking at the magazine where an article about the competition <input class="fill-input" placeholder="PUBLISH">. While she was reading the article for the <input class="fill-input" placeholder="TWO"> time, a brilliant idea came to her – why not take up a summer job as a photographer? She reached for the phone and dialed the number of the photography agency in the town. "Hello, can I help you?" the woman's voice sounded encouraging and Anna <input class="fill-input" placeholder="LARGE"> that she probably had a chance.</div>
+      </div>
+
+      <div class="section" style="border-left-color: #a29bfe;">
+        <h3>📝 Mike Fay</h3>
+        <div class="exercise-item">Mike Fay is a famous biologist. He is well-known for his 2,000-mile walk across Africa. It <input class="fill-input" placeholder="TAKE"> him 455 days. His expedition started in 2001. It <input class="fill-input" placeholder="ORGANIZE"> to draw attention to the African forests. During his expedition Mike Fay made several films about the beauty of the forests. He said they were the <input class="fill-input" placeholder="WONDERFUL"> natural sights he had ever seen. His films <input class="fill-input" placeholder="BE"> a success. Thanks to them the governments of several African countries agreed to create 13 national parks. Mike commented that 26,000 square kilometres of the forest were saved for the future and for our <input class="fill-input" placeholder="CHILD">. At the moment Mike works for the National Geographic. Recently he <input class="fill-input" placeholder="COMPLETE"> several projects for the magazine. His job involves lots of travelling, which is sometimes not very safe. Not long ago, Mike came face to face with an elephant which attacked <input class="fill-input" placeholder="HE">. Mike was injured but luckily not seriously. But danger could never stop Mike. "I wish everyone <input class="fill-input" placeholder="UNDERSTAND"> that life is a very delicate thing. If we go on in the same irresponsible way, we <input class="fill-input" placeholder="KILL"> all life on the planet, and ourselves too".</div>
+      </div>
+
+      <div class="section" style="border-left-color: #20bf6b;">
+        <h3>📝 Bella</h3>
+        <div class="exercise-item">Bella was a good student. She <input class="fill-input" placeholder="ENJOY"> learning but she always started to feel very nervous when she had to write tests. That Monday <input class="fill-input" placeholder="NOT/BE"> a lucky day for her and she realised it as soon as she came into the classroom. "Oh, no! I <input class="fill-input" placeholder="LEAVE"> all my pens at home." She turned to Jenny: "Have you got a spare pen?" "Let <input class="fill-input" placeholder="I"> see," Jenny opened her bag and pulled out a pen. "I've got this one. But it's green." "Give it to me anyway," Bella said. "If I don't find a proper pen, I <input class="fill-input" placeholder="WRITE"> in green ink. I hope it won't affect my grades."</div>
+      </div>
+    </div>
+
+    <!-- HW WORD FORMATION -->
+    <div class="hw-content" id="hw-word">
+      <div class="section" style="border-left-color: #26de81;">
+        <h3>🧩 4C1BB2</h3>
+        <div class="exercise-item">'Surfers Against Sewage' (SAS) was founded in 1990 by water sports enthusiasts in the UK. They are an environmental <input class="fill-input" placeholder="ORGANIZE"> that tries to protect the UK's oceans and beaches. They say that it may be really <input class="fill-input" placeholder="RISK"> to swim in the seas, and even sunbathe on the beaches because of the pollution. When SAS appeared, it informed people about the problem in quite an <input class="fill-input" placeholder="USUAL"> way. They went to public events with their surfboards and handed out leaflets. They attracted the attention of the media and people of Britain. They even managed to put pressure on the <input class="fill-input" placeholder="GOVERN"> to forbid dumping waste in the sea, rivers and lakes. The campaign was indeed <input class="fill-input" placeholder="SUCCESS">. Officials agreed to spend 8.5 billion pounds on cleaning up Britain's seas and rivers.</div>
+      </div>
+
+      <div class="section" style="border-left-color: #00cec9;">
+        <h3>🧩 C63ECC</h3>
+        <div class="exercise-item">People in Britain often talk about climate and weather. They usually complain about their <input class="fill-input" placeholder="CHANGE"> weather. However, there are parts of the world where extreme weather causes real dangers to the <input class="fill-input" placeholder="POPULATE">. Sandstorms, tornadoes and floods cause massive destruction. Lots of people become <input class="fill-input" placeholder="HOME">. To prevent this destruction, it's important to forecast disasters in advance. Japan is the <input class="fill-input" placeholder="LEAD"> world in using new technology for this purpose. The Japanese have also worked out an <input class="fill-input" placeholder="EFFECT"> system of informing people: phone companies automatically notify their customers about emergencies and disasters. These warnings are very efficient, and free of charge.</div>
+      </div>
+
+      <div class="section" style="border-left-color: #fdcb6e;">
+        <h3>🧩 049D9C</h3>
+        <div class="exercise-item">Ecotourism is getting more and more popular. It offers two things at once: <input class="fill-input" placeholder="EDUCATE"> and entertainment. Most people agree that ecotourism is the most <input class="fill-input" placeholder="HARM"> branch of tourism. It makes profit without destroying <input class="fill-input" placeholder="NATURE"> resources. When tourists choose eco trips, they stay in local houses with local people, not in hotels. They travel on foot, by boat, bicycle or elephant to avoid pollution. However, such trips are not at all cheap. This is the only disadvantage. But you can apply the principles of ecotourism every time you go on a normal holiday. You should remember that you're only a <input class="fill-input" placeholder="VISIT"> and be as careful as possible.</div>
+      </div>
+
+      <div class="section" style="border-left-color: #ff7675;">
+        <h3>🧩 2CC797</h3>
+        <div class="exercise-item">Russia is a large country with great diversity in flora and fauna. There are several large parks in Russia. A lot of different animals live there. Wolves are probably the best known, and are very well studied animals, so we have enough <input class="fill-input" placeholder="INFORM"> about their diet and behaviour. The wolf is a good <input class="fill-input" placeholder="HUNT">. They usually hunt wild animals like deer and hares, but sometimes they can attack sheep, goats, and cows. The wolf tries to avoid people and only goes into villages when he is hungry. In some tales, the wolf is often represented as a clever animal that helps the main character, Ivan. The wolf is usually direct and <input class="fill-input" placeholder="REAL"> and helps Ivan to cope with many difficult problems.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>💚 Удачи в подготовке к ОГЭ! Ты справишься! 💚</footer>
+
+<script>
+  // TABS
+  document.querySelectorAll('.tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById(tab.dataset.tab).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+
+  // SUB TABS SPEAKING
+  document.querySelectorAll('.sub-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.sub-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.sub-content').forEach(c => c.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById(tab.dataset.sub).classList.add('active');
+    });
+  });
+
+  // HW SUB TABS
+  document.querySelectorAll('.hw-sub-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.hw-sub-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.hw-content').forEach(c => c.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById(tab.dataset.hw).classList.add('active');
+    });
+  });
+
+  // GRAMMAR NAV
+  document.querySelectorAll('.grammar-nav button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.grammar-nav button').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.grammar-rule').forEach(r => r.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.rule).classList.add('active');
+    });
+  });
+
+  // READING HIGHLIGHT
+  let currentColor = 'hl-yellow';
+  document.querySelectorAll('.hl-btn').forEach(btn => {
+    btn.addEventListener('click', () => { currentColor = btn.dataset.color; });
+  });
+
+  const readingText = document.getElementById('readingText');
+  if (readingText) {
+    readingText.querySelectorAll('p').forEach(p => {
+      const htmlContent = p.innerHTML;
+      const parts = htmlContent.split(/(<span class="drop-zone"[^>]*>.*?<\/span>)/);
+      let newHtml = '';
+      parts.forEach(part => {
+        if (part.startsWith('<span class="drop-zone"')) { newHtml += part; }
+        else { newHtml += part.split(' ').map(w => { if (w.includes('<')) return w; return `<span class="word">${w}</span>`; }).join(' '); }
+      });
+      p.innerHTML = newHtml;
+    });
+    readingText.addEventListener('click', (e) => {
+      if (e.target.classList.contains('word')) {
+        if (!currentColor) { e.target.classList.remove('hl-yellow','hl-green','hl-pink','hl-blue'); }
+        else { e.target.classList.toggle(currentColor); }
+      }
+    });
+  }
+
+  // DRAG AND DROP HEADINGS
+  let draggedHeading = null;
+  document.querySelectorAll('.heading-chip').forEach(chip => {
+    chip.addEventListener('dragstart', (e) => { draggedHeading = chip; chip.classList.add('dragging'); e.dataTransfer.setData('text/plain', chip.dataset.heading); });
+    chip.addEventListener('dragend', () => { chip.classList.remove('dragging'); });
+  });
+  document.querySelectorAll('.drop-zone').forEach(zone => {
+    zone.addEventListener('dragover', (e) => { e.preventDefault(); if (!zone.classList.contains('filled')) zone.classList.add('over'); });
+    zone.addEventListener('dragleave', () => { zone.classList.remove('over'); });
+    zone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      zone.classList.remove('over');
+      if (!draggedHeading) return;
+      zone.textContent = draggedHeading.textContent;
+      zone.classList.add('filled');
+      draggedHeading.remove();
+      draggedHeading = null;
+    });
+  });
+
+  // T/F/NS
+  document.querySelectorAll('.tfns-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const parent = btn.parentElement;
+      parent.querySelectorAll('.tfns-btn').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+    });
+  });
+
+  // MC buttons
+  document.querySelectorAll('.mc-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const q = btn.dataset.q;
+      document.querySelectorAll(`.mc-btn[data-q="${q}"]`).forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+    });
+  });
+
+  // QMARK
+  document.querySelectorAll('.qmark').forEach(mark => {
+    mark.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const li = mark.closest('li');
+      if (mark.textContent === '⬜') { mark.textContent = '✅'; li.classList.add('done'); }
+      else { mark.textContent = '⬜'; li.classList.remove('done'); }
+    });
+  });
+
+  // CHECKLIST MARKERS
+  document.querySelectorAll('.cl-item .mark').forEach(mark => {
+    mark.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const item = mark.closest('.cl-item');
+      if (mark.textContent === '⬜') { mark.textContent = '✅'; item.classList.add('done'); }
+      else { mark.textContent = '⬜'; item.classList.remove('done'); }
+    });
+  });
+
+  // TIMERS
+  const timerIntervals = {};
+  function startTimer(id, seconds) {
+    if (timerIntervals[id]) clearInterval(timerIntervals[id]);
+    let remaining = seconds;
+    updateTimerDisplay(id, remaining);
+    timerIntervals[id] = setInterval(() => {
+      remaining--;
+      if (remaining <= 0) { clearInterval(timerIntervals[id]); remaining = 0; }
+      updateTimerDisplay(id, remaining);
+    }, 1000);
+  }
+  function resetTimer(id, seconds) {
+    if (timerIntervals[id]) clearInterval(timerIntervals[id]);
+    updateTimerDisplay(id, seconds);
+  }
+  function updateTimerDisplay(id, seconds) {
+    const display = document.getElementById(id);
+    if (!display) return;
+    const min = Math.floor(seconds / 60);
+    const sec = seconds % 60;
+    display.textContent = `${min}:${sec.toString().padStart(2, '0')}`;
+  }
+
+  // WHEEL OF FORTUNE
+  const questions = [
+    "What is your best friend like?",
+    "Where did you and your friend meet for the first time?",
+    "How often do you see each other?",
+    "What do you like to do together?",
+    "What career is your best friend going to follow?",
+    "What would you recommend to a teenager who wants to be a good friend?",
+    "What colour of clothes do you prefer wearing?",
+    "What clothes do you usually wear?",
+    "Do you have to wear a school uniform? If so, what is it like?",
+    "Does a career as a fashion designer attract you or not? Why?",
+    "What is your school uniform like?",
+    "Do you think school uniform is necessary or not? Why do you think so?",
+    "Who is your favourite writer?",
+    "What career would you like to choose after finishing your school? Why?",
+    "What would you recommend to a teenager who can't choose a career?"
+  ];
+  let availableQuestions = [...questions];
+  let spinning = false;
+  const colors = ['#26de81','#00b894','#20bf6b','#55efc4','#00cec9','#fdcb6e','#a29bfe','#ff7675','#e84393','#6c5ce7','#f39c12','#27ae60','#e74c3c','#16a085','#d35400'];
+
+  function drawWheel() {
+    const svg = document.getElementById('wheel');
+    if (!svg) return;
+    svg.innerHTML = '';
+    if (availableQuestions.length === 0) {
+      svg.innerHTML = '<text x="0" y="0" text-anchor="middle" dominant-baseline="middle" font-size="0.15" font-weight="bold" fill="#1e7a4c">Все вопросы использованы!</text>';
+      return;
+    }
+    const n = availableQuestions.length;
+    const anglePer = 360 / n;
+    for (let i = 0; i < n; i++) {
+      const startAngle = (i * anglePer - 90) * Math.PI / 180;
+      const endAngle = ((i + 1) * anglePer - 90) * Math.PI / 180;
+      const x1 = Math.cos(startAngle), y1 = Math.sin(startAngle);
+      const x2 = Math.cos(endAngle), y2 = Math.sin(endAngle);
+      const largeArc = anglePer > 180 ? 1 : 0;
+      const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      path.setAttribute('d', `M 0 0 L ${x1} ${y1} A 1 1 0 ${largeArc} 1 ${x2} ${y2} Z`);
+      path.setAttribute('fill', colors[i % colors.length]);
+      path.setAttribute('stroke', '#fff');
+      path.setAttribute('stroke-width', '0.01');
+      svg.appendChild(path);
+    }
+    const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    circle.setAttribute('cx', 0); circle.setAttribute('cy', 0); circle.setAttribute('r', 0.15);
+    circle.setAttribute('fill', '#fff'); circle.setAttribute('stroke', '#26de81'); circle.setAttribute('stroke-width', '0.02');
+    svg.appendChild(circle);
+  }
+
+  let currentRotation = 0;
+  function spinWheel() {
+    if (spinning) return;
+    if (availableQuestions.length === 0) {
+      availableQuestions = [...questions];
+      drawWheel();
+      document.getElementById('questionDisplay').textContent = 'Нажми SPIN, чтобы получить вопрос 🎲';
+      return;
+    }
+    spinning = true;
+    document.getElementById('spinBtn').disabled = true;
+    document.getElementById('questionDisplay').classList.remove('show');
+
+    const n = availableQuestions.length;
+    const winnerIndex = Math.floor(Math.random() * n);
+    const anglePer = 360 / n;
+    const targetAngle = 360 - (winnerIndex * anglePer + anglePer / 2);
+    currentRotation += 360 * 5 + ((targetAngle - (currentRotation % 360)) + 360) % 360;
+
+    const wheel = document.getElementById('wheel');
+    wheel.style.transform = `rotate(${currentRotation}deg)`;
+
+    setTimeout(() => {
+      const question = availableQuestions[winnerIndex];
+      const display = document.getElementById('questionDisplay');
+      display.textContent = question;
+      display.classList.add('show');
+      availableQuestions.splice(winnerIndex, 1);
+      spinning = false;
+      document.getElementById('spinBtn').disabled = false;
+      setTimeout(() => { if (availableQuestions.length > 0) drawWheel(); }, 500);
+    }, 4100);
+  }
+
+  drawWheel();
+</script>
+
+</body>
+</html>
