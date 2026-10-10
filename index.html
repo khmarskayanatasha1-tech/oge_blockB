@@ -587,6 +587,331 @@ header p { color: #a8b8d0; }
 
 /* Раздел «Говорение» — не трогаем, там своя тёмная тема */
 #speaking .tw-body { background: inherit; }
+  /* ============ FIX: ТЕКСТ ВНУТРИ СЕКЦИЙ ТЁМНЫЙ ============ */
+.section,
+.section p,
+.section li,
+.section h2,
+.section h3,
+.section h4,
+.section strong,
+.section span,
+.section a,
+.exercise-item,
+.exercise-item p,
+.exercise-item strong,
+.word-card,
+.word-card .en,
+.word-card .ru,
+.rule-block,
+.rule-block p,
+.rule-block li,
+.rule-block h2,
+.rule-block h3,
+.rule,
+.rule p,
+.rule li,
+.example,
+.example .en,
+.example .ru,
+.tfns-item,
+.tfns-item p,
+.tfns-item strong,
+.match-item,
+.match-item label,
+.question-list li,
+.mc-btn,
+.tfns-btn,
+.reading-block,
+.reading-block p,
+.reading-text,
+.reading-text p,
+.read-text-block,
+.read-text-block p,
+.read-text-block h4,
+.answer-table th,
+.answer-table td,
+.email-card,
+.email-card p,
+.email-card .email-header,
+.mono-card,
+.mono-card h4,
+.mono-card p,
+.mono-card ul,
+.mono-card li,
+.cl-section,
+.cl-item,
+.cl-header .sub,
+.cl-gram-grid,
+.gradable-table,
+.gradable-table th,
+.gradable-table td,
+.two-col p,
+.side-img + p,
+.exercise-item input,
+.fill-input,
+.text-area-answer,
+.notes-area,
+.hw-content .section p,
+.hw-content .section li,
+.hw-content .section h3,
+.hw-content .section h4,
+.media-label,
+.quizlet-btn,
+.check-btn,
+.timer-block,
+.timer-block .timer-label,
+.timer-btn {
+  color: #1a1a2e !important;
+}
+
+/* Заголовки внутри светлых секций — тёмно-синие */
+.section h2,
+.section h3,
+.section h4,
+.read-text-block h4,
+.mono-card h4,
+.word-card .en,
+.example .en,
+.rule-block h2,
+.rule-block h3,
+.rule-block h4,
+.exercise-item strong,
+.tfns-item strong {
+  color: #0a1220 !important;
+}
+
+/* Подсветка заголовков h2 внутри секций */
+.section h2 {
+  color: #142035 !important;
+  text-shadow: none !important;
+}
+
+/* ============ ЗЕЛЁНЫЙ → СИНИЙ ============ */
+
+/* Фон страницы (общий) */
+body {
+  background: linear-gradient(135deg, #050810 0%, #0a1220 30%, #142035 60%, #050810 100%) !important;
+}
+
+/* Секции — светло-голубые оттенки вместо зелёных */
+.section { background: linear-gradient(135deg, #eef4ff, #e0eaff) !important; }
+.section h2, .section h3 { color: #1a2a5c !important; }
+
+/* Шапка — тёмно-синяя с бордовым акцентом */
+header { background: linear-gradient(135deg, #0a1220 0%, #1a2540 50%, #0a1220 100%) !important; }
+header h1 { 
+  background: linear-gradient(180deg, #e8eef8 0%, #8fa8cc 50%, #4a6fa5 100%) !important;
+  -webkit-background-clip: text !important; 
+  -webkit-text-fill-color: transparent !important; 
+  background-clip: text !important; 
+}
+
+/* Табы */
+.tabs { background: #0a1220 !important; border-bottom: 2px solid #4a6fa5 !important; }
+.tab { color: #7b8ba8 !important; }
+.tab:hover { background: #142035 !important; color: #c8d4ec !important; }
+.tab.active { 
+  background: linear-gradient(135deg, #1a2540 0%, #2a3a55 100%) !important; 
+  color: #e8eef8 !important; 
+  border-bottom-color: #8b1a1a !important; 
+}
+
+/* Основные кнопки */
+.quizlet-btn, .check-btn, .spin-btn, .timer-btn.start {
+  background: linear-gradient(135deg, #1a4a7a 0%, #2a6fa5 100%) !important;
+  border-color: #4a6fa5 !important;
+  box-shadow: 0 4px 15px rgba(74, 111, 165, 0.5) !important;
+}
+.quizlet-btn:hover, .check-btn:hover {
+  box-shadow: 0 4px 25px rgba(74, 111, 165, 0.7) !important;
+}
+
+/* Карточки слов */
+.word-card { border-left-color: #4a6fa5 !important; }
+.word-card:hover { transform: translateX(5px); }
+
+/* Поля ввода */
+.fill-input, .text-area-answer, .notes-area, .grammar-textarea {
+  border-color: #4a6fa5 !important;
+  background: #eef4ff !important;
+  color: #1a1a2e !important;
+}
+.fill-input:focus, .text-area-answer:focus, .notes-area:focus, .grammar-textarea:focus {
+  box-shadow: 0 0 0 3px rgba(74, 111, 165, 0.3) !important;
+  background: #fff !important;
+}
+
+/* Навигация грамматики */
+.grammar-nav { background: linear-gradient(135deg, #d4e4ff, #e0eaff) !important; }
+.grammar-nav button { color: #1a2a5c !important; border-color: #4a6fa5 !important; }
+.grammar-nav button.active { 
+  background: linear-gradient(135deg, #2a6fa5, #1a4a7a) !important; 
+  color: #fff !important; 
+}
+
+/* Под-табы */
+.sub-tab { border-color: #4a6fa5 !important; color: #1a2a5c !important; }
+.sub-tab.active { 
+  background: linear-gradient(135deg, #2a6fa5, #1a4a7a) !important; 
+  color: #fff !important; 
+}
+
+/* HW-табы */
+.hw-sub-tab { border-color: #4a6fa5 !important; color: #1a2a5c !important; }
+.hw-sub-tab.active { 
+  background: linear-gradient(135deg, #2a6fa5, #1a4a7a) !important; 
+  color: #fff !important; 
+}
+
+/* T/F/NS-кнопки */
+.tfns-btn { border-color: #4a6fa5 !important; color: #1a2a5c !important; }
+.tfns-btn.selected { 
+  background: linear-gradient(135deg, #2a6fa5, #1a4a7a) !important; 
+  color: #fff !important; 
+  border-color: #1a4a7a !important; 
+}
+
+/* MC-кнопки */
+.mc-btn { border-color: #4a6fa5 !important; color: #1a2a5c !important; }
+.mc-btn.selected { 
+  background: linear-gradient(135deg, #2a6fa5, #1a4a7a) !important; 
+  color: #fff !important; 
+}
+
+/* Заголовки-чипы (headings drag-drop) */
+.heading-chip { 
+  background: linear-gradient(135deg, #2a6fa5, #1a4a7a) !important; 
+  color: #fff !important; 
+  box-shadow: 0 3px 10px rgba(42, 111, 165, 0.4) !important; 
+}
+.drop-zone { border-color: #4a6fa5 !important; background: #eef4ff !important; color: #6b7a99 !important; }
+.drop-zone.over { background: #d4e4ff !important; border-color: #2a6fa5 !important; }
+.drop-zone.filled { background: linear-gradient(135deg, #eef4ff, #d4e4ff) !important; border-color: #2a6fa5 !important; color: #4a6fa5 !important; }
+
+/* Примеры */
+.example { border-left-color: #4a6fa5 !important; background: #eef4ff !important; }
+
+/* Правила */
+.rule { border-left-color: #4a6fa5 !important; background: linear-gradient(135deg, #eef4ff, #e0eaff) !important; }
+
+/* Rule-block */
+.rule-block { border-top-color: #4a6fa5 !important; }
+.rule-block .rule { border-left-color: #4a6fa5 !important; }
+
+/* Timer panel */
+.timer-block { background: linear-gradient(135deg, #d4e4ff, #e0eaff) !important; }
+.timer-display { 
+  background: linear-gradient(135deg, #1a4a7a, #2a6fa5) !important; 
+  -webkit-background-clip: text !important; 
+  -webkit-text-fill-color: transparent !important; 
+  background-clip: text !important; 
+}
+
+/* Word building — таблицы */
+.gradable-table th { background: #e0eaff !important; color: #1a2a5c !important; }
+.gradable-table td, .gradable-table th { border-color: #4a6fa5 !important; }
+
+/* Answer-table */
+.answer-table th { background: #e0eaff !important; color: #1a2a5c !important; }
+.answer-table th, .answer-table td { border-color: #4a6fa5 !important; }
+.answer-table input { color: #1a1a2e !important; }
+
+/* Email-card */
+.email-card { border-left-color: #4a6fa5 !important; }
+.email-card .email-header { border-color: #4a6fa5 !important; }
+
+/* Mono-card */
+.mono-card { background: linear-gradient(135deg, #eef4ff, #e0eaff) !important; border-left-color: #4a6fa5 !important; }
+
+/* Чек-лист */
+.cl-section.lex    { border-color: #4a6fa5 !important; background: linear-gradient(120deg, #eef4ff, #fff) !important; }
+.cl-section.listen { border-color: #4a6fa5 !important; background: linear-gradient(120deg, #eef4ff, #fff) !important; }
+.cl-section.read   { border-color: #4a6fa5 !important; background: linear-gradient(120deg, #eef4ff, #fff) !important; }
+.cl-section.speak  { border-color: #4a6fa5 !important; background: linear-gradient(120deg, #eef4ff, #fff) !important; }
+.cl-section.write  { border-color: #4a6fa5 !important; background: linear-gradient(120deg, #eef4ff, #fff) !important; }
+.cl-section.gram   { border-color: #4a6fa5 !important; background: linear-gradient(120deg, #eef4ff, #fff) !important; }
+.cl-section h3 { color: #1a2a5c !important; }
+.cl-item.done { background: linear-gradient(135deg, #d4e4ff, #e0eaff) !important; color: #1a4a7a !important; }
+
+/* Cl-header */
+.cl-header { background: linear-gradient(135deg, #e0eaff, #d4e4ff, #eef4ff) !important; border-color: #4a6fa5 !important; }
+.cl-header h2 { 
+  background: linear-gradient(90deg, #1a4a7a, #2a6fa5, #4a90e2) !important; 
+  -webkit-background-clip: text !important; 
+  -webkit-text-fill-color: transparent !important; 
+  background-clip: text !important; 
+}
+.cl-header .sub { color: #1a2a5c !important; }
+.cl-finish { 
+  background: linear-gradient(90deg, #d4e4ff 0%, #a8c8f0 50%, #7ea8e8 100%) !important; 
+  box-shadow: 0 4px 15px rgba(74, 111, 165, 0.3) !important; 
+}
+.cl-finish .top { color: #fff !important; }
+.cl-finish .bottom { color: #1a2a5c !important; }
+
+/* Read-aloud section */
+.read-aloud-section { background: linear-gradient(135deg, #eef4ff, #e0eaff) !important; border-left-color: #4a6fa5 !important; }
+.read-text-block { border-left-color: #4a6fa5 !important; }
+.read-text-block h4 { color: #1a2a5c !important; }
+
+/* Медиа-блоки */
+.media-block { border-left-color: #4a6fa5 !important; }
+.media-block .media-label { color: #1a2a5c !important; }
+
+/* Чекбоксы-галочки в вопросах */
+.qmark { color: #4a6fa5; }
+.question-list li.done { color: #4a6fa5 !important; }
+
+/* Reading text */
+.reading-text { background: #f5f8ff !important; }
+.reading-text p::before { 
+  background: linear-gradient(135deg, #2a6fa5, #1a4a7a) !important; 
+}
+.reading-text .word:hover { background: #e0eaff !important; }
+
+/* Info-strip (встречается в Speaking, но на всякий случай) */
+.info-strip { border-left-color: #4a6fa5 !important; }
+
+/* Drag&drop прилагательные */
+.drag-adj-exercise { background: #eef4ff !important; border-left-color: #4a6fa5 !important; }
+.drag-adj-image { border-color: #4a6fa5 !important; box-shadow: 0 6px 25px rgba(74, 111, 165, 0.3) !important; }
+.adj-chips-bank { background: #eef4ff !important; border-color: #4a6fa5 !important; }
+.adj-chip { 
+  background: linear-gradient(135deg, #2a6fa5, #1a4a7a) !important; 
+  box-shadow: 0 3px 10px rgba(42, 111, 165, 0.3) !important; 
+}
+.adj-slot { border-color: #4a6fa5 !important; background: #fff !important; }
+.adj-slot.over { background: #d4e4ff !important; border-color: #2a6fa5 !important; }
+.adj-slot.filled { background: #e0eaff !important; border-color: #1a4a7a !important; }
+.adj-noun-label { color: #1a2a5c !important; }
+
+/* Comparison task */
+.compare-image { border-color: #4a6fa5 !important; box-shadow: 0 6px 25px rgba(74, 111, 165, 0.3) !important; }
+.compare-task { background: #eef4ff !important; border-left-color: #4a6fa5 !important; }
+
+/* Quizlet кнопка — тёмно-синяя */
+.quizlet-btn {
+  background: linear-gradient(135deg, #1a4a7a, #2a6fa5) !important;
+}
+
+/* Главная — обложка */
+.home-cover { border-left-color: #8b1a1a !important; }
+.home-intro { border-left-color: #8b1a1a !important; }
+.home-intro .intro-quote {
+  background: linear-gradient(135deg, #eef4ff, #d4e4ff) !important;
+  border-left-color: #4a6fa5 !important;
+  color: #1a2a5c !important;
+}
+
+/* ============ SPEAKING (Twilight) — НЕ ТРОГАЕМ ============ */
+#speaking .tw-body { background: inherit !important; }
+#speaking .check-btn { background: linear-gradient(135deg, #2a3a55 0%, #4a6fa5 100%) !important; }
+#speaking .fill-input { 
+  background: rgba(10, 18, 32, 0.6) !important; 
+  color: #e8eef8 !important; 
+  border-color: #7b9fd5 !important; 
+}
 </style>
 </head>
 <body>
