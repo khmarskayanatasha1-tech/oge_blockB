@@ -430,59 +430,52 @@
   .home-intro p { font-size: 1.02em; line-height: 1.7; }
   .home-intro .intro-quote { margin-top: 18px; padding: 16px 20px; background: linear-gradient(135deg, #fff0f5, #ffe6ee); border-radius: 12px; border-left: 4px solid #e84393; font-style: italic; color: #8b1a4a; font-size: 1.05em; font-weight: 600; }
   .home-intro .intro-quote::before { content: '🩸 '; font-size: 1.1em; }
-  /* ==================== VAMPIRE THEME OVERRIDE ==================== */
+  /* ==================== VAMPIRE THEME OVERRIDE v2 ==================== */
 
-/* Общий фон — тёмный, мрачный, с вампирской атмосферой */
-body {
-  background: linear-gradient(135deg, #050810 0%, #0a1220 30%, #142035 60%, #050810 100%);
-  color: #d8e2f0;
+/* === ФОН И АТМОСФЕРА === */
+html, body {
+  background: linear-gradient(135deg, #050810 0%, #0a1220 30%, #142035 60%, #050810 100%) !important;
+  color: #d8e2f0 !important;
 }
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
+
+/* Скрываем старый зелёный слой */
+body::before { display: none !important; }
+
+body::after {
+  content: '' !important;
+  position: fixed !important;
+  inset: 0 !important;
   background-image:
     radial-gradient(ellipse at 20% 30%, rgba(80, 120, 180, 0.15) 0%, transparent 50%),
     radial-gradient(ellipse at 80% 70%, rgba(139, 26, 26, 0.12) 0%, transparent 50%),
     radial-gradient(circle at 15% 85%, rgba(196, 30, 58, 0.08) 0%, transparent 30%),
-    radial-gradient(circle at 85% 15%, rgba(139, 26, 26, 0.08) 0%, transparent 25%);
-  pointer-events: none;
-  z-index: 0;
-}
-body::after {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Cpath d='M20 150 Q 60 120 100 150 M 100 150 Q 140 120 180 150 M 180 150 Q 220 120 260 150' stroke='rgba(120, 160, 210, 0.08)' stroke-width='2' fill='none'/%3E%3Cpath d='M20 220 Q 60 190 100 220 M 100 220 Q 140 190 180 220 M 180 220 Q 220 190 260 220' stroke='rgba(196, 30, 58, 0.05)' stroke-width='2' fill='none'/%3E%3C/svg%3E");
-  background-size: 500px 500px;
-  opacity: 0.6;
-  pointer-events: none;
-  z-index: 0;
+    radial-gradient(circle at 85% 15%, rgba(139, 26, 26, 0.08) 0%, transparent 25%) !important;
+  pointer-events: none !important;
+  z-index: 0 !important;
 }
 
-/* Декоративные элементы (луна + звёзды) */
+/* === ДЕКОР: ЛУНА И ЗВЁЗДЫ === */
 .vampire-decor {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  overflow: hidden;
+  position: fixed !important;
+  inset: 0 !important;
+  pointer-events: none !important;
+  z-index: 0 !important;
+  overflow: hidden !important;
 }
 .vampire-moon {
-  position: fixed;
-  top: 40px;
-  right: 50px;
-  width: 130px;
-  height: 130px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 35% 35%, #f0f4ff 0%, #c0cde0 40%, #6b7a99 70%, transparent 100%);
-  box-shadow: 0 0 90px rgba(200, 220, 255, 0.5), 0 0 180px rgba(120, 160, 220, 0.25);
-  opacity: 0.75;
+  position: fixed !important;
+  top: 60px !important;
+  right: 60px !important;
+  width: 140px !important;
+  height: 140px !important;
+  border-radius: 50% !important;
+  background: radial-gradient(circle at 35% 35%, #f0f4ff 0%, #c0cde0 40%, #6b7a99 70%, transparent 100%) !important;
+  box-shadow: 0 0 90px rgba(200, 220, 255, 0.5), 0 0 180px rgba(120, 160, 220, 0.25) !important;
+  opacity: 0.85 !important;
 }
 .vampire-stars {
-  position: fixed;
-  inset: 0;
+  position: fixed !important;
+  inset: 0 !important;
   background-image:
     radial-gradient(1.5px 1.5px at 12% 15%, #fff, transparent),
     radial-gradient(1px 1px at 28% 8%, #c8d4ec, transparent),
@@ -493,425 +486,485 @@ body::after {
     radial-gradient(1px 1px at 8% 55%, #c8d4ec, transparent),
     radial-gradient(1.5px 1.5px at 92% 75%, #fff, transparent),
     radial-gradient(1px 1px at 35% 65%, #c8d4ec, transparent),
-    radial-gradient(1.5px 1.5px at 5% 88%, #fff, transparent);
-  opacity: 0.7;
-  animation: vampTwinkle 6s infinite alternate;
+    radial-gradient(1.5px 1.5px at 5% 88%, #fff, transparent) !important;
+  opacity: 0.7 !important;
+  animation: vampTwinkle 6s infinite alternate !important;
 }
 @keyframes vampTwinkle {
   0%   { opacity: 0.4; }
   100% { opacity: 0.85; }
 }
 
-/* Контейнер — тёмный */
-.container {
-  background: linear-gradient(180deg, rgba(15, 22, 38, 0.97) 0%, rgba(8, 12, 22, 0.99) 100%);
-  border: 1px solid #2a3a55;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.9), 0 0 120px rgba(80, 120, 180, 0.12);
+/* === КОНТЕЙНЕР === */
+body .container {
+  background: linear-gradient(180deg, rgba(15, 22, 38, 0.97) 0%, rgba(8, 12, 22, 0.99) 100%) !important;
+  border: 1px solid #2a3a55 !important;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.9), 0 0 120px rgba(80, 120, 180, 0.12) !important;
 }
 
-/* Шапка — тёмная с вампирскими символами */
-header {
-  background: linear-gradient(135deg, #0a1220 0%, #1a2540 50%, #0a1220 100%);
-  border-bottom: 2px solid #8b1a1a;
-  color: #e8eef8;
-  padding: 50px 20px 40px;
+/* === ШАПКА === */
+body header {
+  background: linear-gradient(135deg, #0a1220 0%, #1a2540 50%, #0a1220 100%) !important;
+  border-bottom: 2px solid #8b1a1a !important;
+  color: #e8eef8 !important;
 }
-header::before {
-  content: '🦇 🌒 🩸 🌙 ⚡ ❄ 🐺 🦇';
-  position: absolute;
-  top: 12px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 0.9em;
-  letter-spacing: 12px;
-  opacity: 0.5;
+body header::before {
+  content: '🦇 🌒 🩸 🌙 ⚡ ❄ 🐺 🦇' !important;
+  position: absolute !important;
+  top: 12px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  font-size: 0.9em !important;
+  letter-spacing: 12px !important;
+  opacity: 0.5 !important;
 }
-header h1 {
-  font-family: 'Georgia', serif;
-  letter-spacing: 4px;
-  background: linear-gradient(180deg, #e8eef8 0%, #8fa8cc 50%, #4a6fa5 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-shadow: 0 0 30px rgba(140, 180, 230, 0.3);
+body header h1 {
+  font-family: 'Georgia', serif !important;
+  letter-spacing: 4px !important;
+  background: linear-gradient(180deg, #e8eef8 0%, #8fa8cc 50%, #4a6fa5 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
 }
-header p { color: #a8b8d0; }
+body header p { color: #a8b8d0 !important; }
 
-/* Табы — тёмные */
-.tabs {
-  background: #0a1220;
-  border-bottom: 2px solid #2a3a55;
+/* === ТАБЫ — СИНИЕ === */
+body .tabs {
+  background: #0a1220 !important;
+  border-bottom: 2px solid #2a3a55 !important;
 }
-.tab {
-  color: #7b8ba8;
-  border-bottom: 4px solid transparent;
+body .tab {
+  color: #7b8ba8 !important;
+  border-bottom: 4px solid transparent !important;
+  background: transparent !important;
 }
-.tab:hover {
-  background: #142035;
-  color: #c8d4ec;
+body .tab:hover {
+  background: #142035 !important;
+  color: #c8d4ec !important;
 }
-.tab.active {
-  background: linear-gradient(135deg, #1a2540 0%, #2a3a55 100%);
-  color: #e8eef8;
-  border-bottom-color: #8b1a1a;
-  text-shadow: 0 0 12px rgba(200, 220, 255, 0.5);
-}
-
-/* ===== ВАЖНО: секции остаются светлыми для читаемости ===== */
-/* НО: обрамление — с кроваво-красным акцентом */
-.section {
-  border-left-color: #8b1a1a;
+body .tab.active {
+  background: linear-gradient(135deg, #1a2540 0%, #2a3a55 100%) !important;
+  color: #e8eef8 !important;
+  border-bottom-color: #4a6fa5 !important;
+  text-shadow: 0 0 12px rgba(120, 160, 220, 0.6) !important;
 }
 
-/* Кнопки «Проверить», таймеры — в кроваво-красный */
-.check-btn {
-  background: linear-gradient(135deg, #4a0f1a 0%, #8b1a1a 100%) !important;
-  border-color: #c41e3a !important;
-}
-.check-btn:hover {
-  box-shadow: 0 0 25px rgba(196, 30, 58, 0.5) !important;
-}
-.timer-btn.start {
-  background: linear-gradient(135deg, #4a0f1a, #8b1a1a) !important;
-}
-.timer-btn.start:hover {
-  box-shadow: 0 0 20px rgba(196, 30, 58, 0.4);
-}
-.quizlet-btn {
-  background: linear-gradient(135deg, #8b1a1a, #c41e3a) !important;
-  box-shadow: 0 4px 15px rgba(139, 26, 26, 0.5) !important;
-}
-.quizlet-btn:hover {
-  box-shadow: 0 4px 25px rgba(196, 30, 58, 0.6) !important;
-}
-
-/* Раздел «Говорение» — не трогаем, там своя тёмная тема */
-#speaking .tw-body { background: inherit; }
-  /* ============ FIX: ТЕКСТ ВНУТРИ СЕКЦИЙ ТЁМНЫЙ ============ */
-.section,
-.section p,
-.section li,
-.section h2,
-.section h3,
-.section h4,
-.section strong,
-.section span,
-.section a,
-.exercise-item,
-.exercise-item p,
-.exercise-item strong,
-.word-card,
-.word-card .en,
-.word-card .ru,
-.rule-block,
-.rule-block p,
-.rule-block li,
-.rule-block h2,
-.rule-block h3,
-.rule,
-.rule p,
-.rule li,
-.example,
-.example .en,
-.example .ru,
-.tfns-item,
-.tfns-item p,
-.tfns-item strong,
-.match-item,
-.match-item label,
-.question-list li,
-.mc-btn,
-.tfns-btn,
-.reading-block,
-.reading-block p,
-.reading-text,
-.reading-text p,
-.read-text-block,
-.read-text-block p,
-.read-text-block h4,
-.answer-table th,
-.answer-table td,
-.email-card,
-.email-card p,
-.email-card .email-header,
-.mono-card,
-.mono-card h4,
-.mono-card p,
-.mono-card ul,
-.mono-card li,
-.cl-section,
-.cl-item,
-.cl-header .sub,
-.cl-gram-grid,
-.gradable-table,
-.gradable-table th,
-.gradable-table td,
-.two-col p,
-.side-img + p,
-.exercise-item input,
-.fill-input,
-.text-area-answer,
-.notes-area,
-.hw-content .section p,
-.hw-content .section li,
-.hw-content .section h3,
-.hw-content .section h4,
-.media-label,
-.quizlet-btn,
-.check-btn,
-.timer-block,
-.timer-block .timer-label,
-.timer-btn {
+/* === ТЁМНЫЙ ТЕКСТ ВНУТРИ СЕКЦИЙ === */
+body .section,
+body .section *,
+body .exercise-item,
+body .exercise-item *,
+body .word-card,
+body .word-card *,
+body .rule-block,
+body .rule-block *,
+body .rule,
+body .rule *,
+body .example,
+body .example *,
+body .tfns-item,
+body .tfns-item *,
+body .match-item,
+body .match-item *,
+body .question-list li,
+body .question-list li *,
+body .reading-block,
+body .reading-block *,
+body .reading-text,
+body .reading-text *,
+body .read-text-block,
+body .read-text-block *,
+body .answer-table,
+body .answer-table *,
+body .email-card,
+body .email-card *,
+body .mono-card,
+body .mono-card *,
+body .cl-section,
+body .cl-section *,
+body .cl-item,
+body .cl-item *,
+body .gradable-table,
+body .gradable-table * {
   color: #1a1a2e !important;
 }
 
-/* Заголовки внутри светлых секций — тёмно-синие */
-.section h2,
-.section h3,
-.section h4,
-.read-text-block h4,
-.mono-card h4,
-.word-card .en,
-.example .en,
-.rule-block h2,
-.rule-block h3,
-.rule-block h4,
-.exercise-item strong,
-.tfns-item strong {
+/* Заголовки — тёмно-синие */
+body .section h2,
+body .section h3,
+body .section h4,
+body .rule-block h2,
+body .rule-block h3,
+body .rule-block h4,
+body .word-card .en,
+body .example .en,
+body .read-text-block h4,
+body .mono-card h4 {
   color: #0a1220 !important;
 }
 
-/* Подсветка заголовков h2 внутри секций */
-.section h2 {
-  color: #142035 !important;
-  text-shadow: none !important;
+/* === ФОН СЕКЦИЙ — СВЕТЛО-ГОЛУБОЙ === */
+body .section {
+  background: linear-gradient(135deg, #eef4ff, #e0eaff) !important;
+  border-left-color: #4a6fa5 !important;
 }
 
-/* ============ ЗЕЛЁНЫЙ → СИНИЙ ============ */
-
-/* Фон страницы (общий) */
-body {
-  background: linear-gradient(135deg, #050810 0%, #0a1220 30%, #142035 60%, #050810 100%) !important;
+/* === ФОН БЕЛЫЙ ДЛЯ ЗАДАНИЙ === */
+body .exercise-item,
+body .word-card,
+body .rule-block,
+body .tfns-item,
+body .match-item,
+body .question-list li,
+body .reading-block,
+body .read-text-block,
+body .email-card,
+body .mono-card,
+body .gradable-table td,
+body .gradable-table th {
+  background: #fff !important;
+}
+body .rule {
+  background: linear-gradient(135deg, #eef4ff, #e0eaff) !important;
+  border-left-color: #4a6fa5 !important;
+}
+body .example {
+  background: #eef4ff !important;
+  border-left-color: #4a6fa5 !important;
 }
 
-/* Секции — светло-голубые оттенки вместо зелёных */
-.section { background: linear-gradient(135deg, #eef4ff, #e0eaff) !important; }
-.section h2, .section h3 { color: #1a2a5c !important; }
-
-/* Шапка — тёмно-синяя с бордовым акцентом */
-header { background: linear-gradient(135deg, #0a1220 0%, #1a2540 50%, #0a1220 100%) !important; }
-header h1 { 
-  background: linear-gradient(180deg, #e8eef8 0%, #8fa8cc 50%, #4a6fa5 100%) !important;
-  -webkit-background-clip: text !important; 
-  -webkit-text-fill-color: transparent !important; 
-  background-clip: text !important; 
-}
-
-/* Табы */
-.tabs { background: #0a1220 !important; border-bottom: 2px solid #4a6fa5 !important; }
-.tab { color: #7b8ba8 !important; }
-.tab:hover { background: #142035 !important; color: #c8d4ec !important; }
-.tab.active { 
-  background: linear-gradient(135deg, #1a2540 0%, #2a3a55 100%) !important; 
-  color: #e8eef8 !important; 
-  border-bottom-color: #8b1a1a !important; 
-}
-
-/* Основные кнопки */
-.quizlet-btn, .check-btn, .spin-btn, .timer-btn.start {
+/* === КНОПКИ — СИНИЕ === */
+body .quizlet-btn,
+body .check-btn,
+body .timer-btn.start {
   background: linear-gradient(135deg, #1a4a7a 0%, #2a6fa5 100%) !important;
   border-color: #4a6fa5 !important;
   box-shadow: 0 4px 15px rgba(74, 111, 165, 0.5) !important;
+  color: #fff !important;
 }
-.quizlet-btn:hover, .check-btn:hover {
+body .quizlet-btn:hover,
+body .check-btn:hover {
   box-shadow: 0 4px 25px rgba(74, 111, 165, 0.7) !important;
+  transform: scale(1.05) !important;
 }
 
-/* Карточки слов */
-.word-card { border-left-color: #4a6fa5 !important; }
-.word-card:hover { transform: translateX(5px); }
-
-/* Поля ввода */
-.fill-input, .text-area-answer, .notes-area, .grammar-textarea {
+/* === ПОЛЯ ВВОДА — СИНИЕ === */
+body .fill-input,
+body .text-area-answer,
+body .notes-area,
+body .grammar-textarea {
   border-color: #4a6fa5 !important;
   background: #eef4ff !important;
   color: #1a1a2e !important;
 }
-.fill-input:focus, .text-area-answer:focus, .notes-area:focus, .grammar-textarea:focus {
+body .fill-input:focus,
+body .text-area-answer:focus,
+body .notes-area:focus,
+body .grammar-textarea:focus {
   box-shadow: 0 0 0 3px rgba(74, 111, 165, 0.3) !important;
   background: #fff !important;
 }
 
-/* Навигация грамматики */
-.grammar-nav { background: linear-gradient(135deg, #d4e4ff, #e0eaff) !important; }
-.grammar-nav button { color: #1a2a5c !important; border-color: #4a6fa5 !important; }
-.grammar-nav button.active { 
-  background: linear-gradient(135deg, #2a6fa5, #1a4a7a) !important; 
-  color: #fff !important; 
+/* === НАВИГАЦИЯ ГРАММАТИКИ === */
+body .grammar-nav {
+  background: linear-gradient(135deg, #d4e4ff, #e0eaff) !important;
+}
+body .grammar-nav button {
+  color: #1a2a5c !important;
+  border-color: #4a6fa5 !important;
+  background: #fff !important;
+}
+body .grammar-nav button.active {
+  background: linear-gradient(135deg, #2a6fa5, #1a4a7a) !important;
+  color: #fff !important;
 }
 
-/* Под-табы */
-.sub-tab { border-color: #4a6fa5 !important; color: #1a2a5c !important; }
-.sub-tab.active { 
-  background: linear-gradient(135deg, #2a6fa5, #1a4a7a) !important; 
-  color: #fff !important; 
+/* === ПОД-ТАБЫ === */
+body .sub-tab {
+  border-color: #4a6fa5 !important;
+  color: #1a2a5c !important;
+  background: #fff !important;
+}
+body .sub-tab.active {
+  background: linear-gradient(135deg, #2a6fa5, #1a4a7a) !important;
+  color: #fff !important;
+}
+body .hw-sub-tab {
+  border-color: #4a6fa5 !important;
+  color: #1a2a5c !important;
+  background: #fff !important;
+}
+body .hw-sub-tab.active {
+  background: linear-gradient(135deg, #2a6fa5, #1a4a7a) !important;
+  color: #fff !important;
 }
 
-/* HW-табы */
-.hw-sub-tab { border-color: #4a6fa5 !important; color: #1a2a5c !important; }
-.hw-sub-tab.active { 
-  background: linear-gradient(135deg, #2a6fa5, #1a4a7a) !important; 
-  color: #fff !important; 
+/* === T/F/NS === */
+body .tfns-btn {
+  border-color: #4a6fa5 !important;
+  color: #1a2a5c !important;
+  background: #fff !important;
+}
+body .tfns-btn.selected {
+  background: linear-gradient(135deg, #2a6fa5, #1a4a7a) !important;
+  color: #fff !important;
+  border-color: #1a4a7a !important;
 }
 
-/* T/F/NS-кнопки */
-.tfns-btn { border-color: #4a6fa5 !important; color: #1a2a5c !important; }
-.tfns-btn.selected { 
-  background: linear-gradient(135deg, #2a6fa5, #1a4a7a) !important; 
-  color: #fff !important; 
-  border-color: #1a4a7a !important; 
+/* === MC КНОПКИ === */
+body .mc-btn {
+  border-color: #4a6fa5 !important;
+  color: #1a2a5c !important;
+  background: #fff !important;
+}
+body .mc-btn.selected {
+  background: linear-gradient(135deg, #2a6fa5, #1a4a7a) !important;
+  color: #fff !important;
 }
 
-/* MC-кнопки */
-.mc-btn { border-color: #4a6fa5 !important; color: #1a2a5c !important; }
-.mc-btn.selected { 
-  background: linear-gradient(135deg, #2a6fa5, #1a4a7a) !important; 
-  color: #fff !important; 
+/* === HEADINGS CHIPS === */
+body .heading-chip {
+  background: linear-gradient(135deg, #2a6fa5, #1a4a7a) !important;
+  color: #fff !important;
+  box-shadow: 0 3px 10px rgba(42, 111, 165, 0.4) !important;
+}
+body .drop-zone {
+  border-color: #4a6fa5 !important;
+  background: #eef4ff !important;
+  color: #6b7a99 !important;
+}
+body .drop-zone.over {
+  background: #d4e4ff !important;
+  border-color: #2a6fa5 !important;
+}
+body .drop-zone.filled {
+  background: linear-gradient(135deg, #eef4ff, #d4e4ff) !important;
+  border-color: #2a6fa5 !important;
+  color: #4a6fa5 !important;
 }
 
-/* Заголовки-чипы (headings drag-drop) */
-.heading-chip { 
-  background: linear-gradient(135deg, #2a6fa5, #1a4a7a) !important; 
-  color: #fff !important; 
-  box-shadow: 0 3px 10px rgba(42, 111, 165, 0.4) !important; 
+/* === READING HIGHLIGHT === */
+body .reading-text {
+  background: #f5f8ff !important;
 }
-.drop-zone { border-color: #4a6fa5 !important; background: #eef4ff !important; color: #6b7a99 !important; }
-.drop-zone.over { background: #d4e4ff !important; border-color: #2a6fa5 !important; }
-.drop-zone.filled { background: linear-gradient(135deg, #eef4ff, #d4e4ff) !important; border-color: #2a6fa5 !important; color: #4a6fa5 !important; }
+body .reading-text p::before {
+  background: linear-gradient(135deg, #2a6fa5, #1a4a7a) !important;
+}
+body .reading-text .word:hover {
+  background: #e0eaff !important;
+}
+body .hl-btn.y { background: #ffe066 !important; }
+body .hl-btn.g { background: #b2f2bb !important; }
+body .hl-btn.p { background: #ffc9de !important; }
+body .hl-btn.b { background: #a5d8ff !important; }
 
-/* Примеры */
-.example { border-left-color: #4a6fa5 !important; background: #eef4ff !important; }
-
-/* Правила */
-.rule { border-left-color: #4a6fa5 !important; background: linear-gradient(135deg, #eef4ff, #e0eaff) !important; }
-
-/* Rule-block */
-.rule-block { border-top-color: #4a6fa5 !important; }
-.rule-block .rule { border-left-color: #4a6fa5 !important; }
-
-/* Timer panel */
-.timer-block { background: linear-gradient(135deg, #d4e4ff, #e0eaff) !important; }
-.timer-display { 
-  background: linear-gradient(135deg, #1a4a7a, #2a6fa5) !important; 
-  -webkit-background-clip: text !important; 
-  -webkit-text-fill-color: transparent !important; 
-  background-clip: text !important; 
+/* === ТАБЛИЦЫ === */
+body .gradable-table th,
+body .answer-table th {
+  background: #e0eaff !important;
+  color: #1a2a5c !important;
+}
+body .gradable-table td,
+body .gradable-table th,
+body .answer-table td,
+body .answer-table th {
+  border-color: #4a6fa5 !important;
 }
 
-/* Word building — таблицы */
-.gradable-table th { background: #e0eaff !important; color: #1a2a5c !important; }
-.gradable-table td, .gradable-table th { border-color: #4a6fa5 !important; }
-
-/* Answer-table */
-.answer-table th { background: #e0eaff !important; color: #1a2a5c !important; }
-.answer-table th, .answer-table td { border-color: #4a6fa5 !important; }
-.answer-table input { color: #1a1a2e !important; }
-
-/* Email-card */
-.email-card { border-left-color: #4a6fa5 !important; }
-.email-card .email-header { border-color: #4a6fa5 !important; }
-
-/* Mono-card */
-.mono-card { background: linear-gradient(135deg, #eef4ff, #e0eaff) !important; border-left-color: #4a6fa5 !important; }
-
-/* Чек-лист */
-.cl-section.lex    { border-color: #4a6fa5 !important; background: linear-gradient(120deg, #eef4ff, #fff) !important; }
-.cl-section.listen { border-color: #4a6fa5 !important; background: linear-gradient(120deg, #eef4ff, #fff) !important; }
-.cl-section.read   { border-color: #4a6fa5 !important; background: linear-gradient(120deg, #eef4ff, #fff) !important; }
-.cl-section.speak  { border-color: #4a6fa5 !important; background: linear-gradient(120deg, #eef4ff, #fff) !important; }
-.cl-section.write  { border-color: #4a6fa5 !important; background: linear-gradient(120deg, #eef4ff, #fff) !important; }
-.cl-section.gram   { border-color: #4a6fa5 !important; background: linear-gradient(120deg, #eef4ff, #fff) !important; }
-.cl-section h3 { color: #1a2a5c !important; }
-.cl-item.done { background: linear-gradient(135deg, #d4e4ff, #e0eaff) !important; color: #1a4a7a !important; }
-
-/* Cl-header */
-.cl-header { background: linear-gradient(135deg, #e0eaff, #d4e4ff, #eef4ff) !important; border-color: #4a6fa5 !important; }
-.cl-header h2 { 
-  background: linear-gradient(90deg, #1a4a7a, #2a6fa5, #4a90e2) !important; 
-  -webkit-background-clip: text !important; 
-  -webkit-text-fill-color: transparent !important; 
-  background-clip: text !important; 
+/* === EMAIL CARD === */
+body .email-card {
+  border-left-color: #4a6fa5 !important;
 }
-.cl-header .sub { color: #1a2a5c !important; }
-.cl-finish { 
-  background: linear-gradient(90deg, #d4e4ff 0%, #a8c8f0 50%, #7ea8e8 100%) !important; 
-  box-shadow: 0 4px 15px rgba(74, 111, 165, 0.3) !important; 
+body .email-card .email-header {
+  border-color: #4a6fa5 !important;
 }
-.cl-finish .top { color: #fff !important; }
-.cl-finish .bottom { color: #1a2a5c !important; }
 
-/* Read-aloud section */
-.read-aloud-section { background: linear-gradient(135deg, #eef4ff, #e0eaff) !important; border-left-color: #4a6fa5 !important; }
-.read-text-block { border-left-color: #4a6fa5 !important; }
-.read-text-block h4 { color: #1a2a5c !important; }
-
-/* Медиа-блоки */
-.media-block { border-left-color: #4a6fa5 !important; }
-.media-block .media-label { color: #1a2a5c !important; }
-
-/* Чекбоксы-галочки в вопросах */
-.qmark { color: #4a6fa5; }
-.question-list li.done { color: #4a6fa5 !important; }
-
-/* Reading text */
-.reading-text { background: #f5f8ff !important; }
-.reading-text p::before { 
-  background: linear-gradient(135deg, #2a6fa5, #1a4a7a) !important; 
+/* === MONO CARD === */
+body .mono-card {
+  background: linear-gradient(135deg, #eef4ff, #e0eaff) !important;
+  border-left-color: #4a6fa5 !important;
 }
-.reading-text .word:hover { background: #e0eaff !important; }
 
-/* Info-strip (встречается в Speaking, но на всякий случай) */
-.info-strip { border-left-color: #4a6fa5 !important; }
-
-/* Drag&drop прилагательные */
-.drag-adj-exercise { background: #eef4ff !important; border-left-color: #4a6fa5 !important; }
-.drag-adj-image { border-color: #4a6fa5 !important; box-shadow: 0 6px 25px rgba(74, 111, 165, 0.3) !important; }
-.adj-chips-bank { background: #eef4ff !important; border-color: #4a6fa5 !important; }
-.adj-chip { 
-  background: linear-gradient(135deg, #2a6fa5, #1a4a7a) !important; 
-  box-shadow: 0 3px 10px rgba(42, 111, 165, 0.3) !important; 
+/* === ЧЕК-ЛИСТ === */
+body .cl-section {
+  border-color: #4a6fa5 !important;
 }
-.adj-slot { border-color: #4a6fa5 !important; background: #fff !important; }
-.adj-slot.over { background: #d4e4ff !important; border-color: #2a6fa5 !important; }
-.adj-slot.filled { background: #e0eaff !important; border-color: #1a4a7a !important; }
-.adj-noun-label { color: #1a2a5c !important; }
+body .cl-section.lex    { background: linear-gradient(120deg, #eef4ff, #fff) !important; }
+body .cl-section.listen { background: linear-gradient(120deg, #eef4ff, #fff) !important; }
+body .cl-section.read   { background: linear-gradient(120deg, #eef4ff, #fff) !important; }
+body .cl-section.speak  { background: linear-gradient(120deg, #eef4ff, #fff) !important; }
+body .cl-section.write  { background: linear-gradient(120deg, #eef4ff, #fff) !important; }
+body .cl-section.gram   { background: linear-gradient(120deg, #eef4ff, #fff) !important; }
+body .cl-section h3 { color: #1a2a5c !important; }
+body .cl-item {
+  color: #1a1a2e !important;
+  background: rgba(255,255,255,0.75) !important;
+}
+body .cl-item.done {
+  background: linear-gradient(135deg, #d4e4ff, #e0eaff) !important;
+  color: #1a4a7a !important;
+}
+body .cl-header {
+  background: linear-gradient(135deg, #e0eaff, #d4e4ff, #eef4ff) !important;
+  border-color: #4a6fa5 !important;
+}
+body .cl-header h2 {
+  background: linear-gradient(90deg, #1a4a7a, #2a6fa5, #4a90e2) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+}
+body .cl-header .sub { color: #1a2a5c !important; }
+body .cl-finish {
+  background: linear-gradient(90deg, #d4e4ff 0%, #a8c8f0 50%, #7ea8e8 100%) !important;
+  box-shadow: 0 4px 15px rgba(74, 111, 165, 0.3) !important;
+}
+body .cl-finish .top { color: #fff !important; }
+body .cl-finish .bottom { color: #1a2a5c !important; }
 
-/* Comparison task */
-.compare-image { border-color: #4a6fa5 !important; box-shadow: 0 6px 25px rgba(74, 111, 165, 0.3) !important; }
-.compare-task { background: #eef4ff !important; border-left-color: #4a6fa5 !important; }
-
-/* Quizlet кнопка — тёмно-синяя */
-.quizlet-btn {
+/* === READ ALOUD === */
+body .read-aloud-section {
+  background: linear-gradient(135deg, #eef4ff, #e0eaff) !important;
+  border-left-color: #4a6fa5 !important;
+}
+body .read-text-block {
+  border-left-color: #4a6fa5 !important;
+}
+body .read-text-block h4 { color: #1a2a5c !important; }
+body .timer-block {
+  background: linear-gradient(135deg, #d4e4ff, #e0eaff) !important;
+}
+body .timer-block .timer-label { color: #1a2a5c !important; }
+body .timer-display {
   background: linear-gradient(135deg, #1a4a7a, #2a6fa5) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+}
+body .timer-btn.reset {
+  background: linear-gradient(135deg, #8b1a1a, #c41e3a) !important;
+  color: #fff !important;
 }
 
-/* Главная — обложка */
-.home-cover { border-left-color: #8b1a1a !important; }
-.home-intro { border-left-color: #8b1a1a !important; }
-.home-intro .intro-quote {
+/* === MEDIA === */
+body .media-block { border-left-color: #4a6fa5 !important; }
+body .media-block .media-label { color: #1a2a5c !important; }
+
+/* === QMARK === */
+body .qmark { color: #4a6fa5 !important; }
+body .question-list li.done { color: #4a6fa5 !important; }
+
+/* === DRAG & DROP ПРИЛАГАТЕЛЬНЫЕ === */
+body .drag-adj-exercise {
+  background: #eef4ff !important;
+  border-left-color: #4a6fa5 !important;
+}
+body .drag-adj-image {
+  border-color: #4a6fa5 !important;
+  box-shadow: 0 6px 25px rgba(74, 111, 165, 0.3) !important;
+}
+body .adj-chips-bank {
+  background: #eef4ff !important;
+  border-color: #4a6fa5 !important;
+}
+body .adj-chip {
+  background: linear-gradient(135deg, #2a6fa5, #1a4a7a) !important;
+  box-shadow: 0 3px 10px rgba(42, 111, 165, 0.3) !important;
+}
+body .adj-slot {
+  border-color: #4a6fa5 !important;
+  background: #fff !important;
+}
+body .adj-slot.over {
+  background: #d4e4ff !important;
+  border-color: #2a6fa5 !important;
+}
+body .adj-slot.filled {
+  background: #e0eaff !important;
+  border-color: #1a4a7a !important;
+}
+body .adj-slot.correct {
+  border-color: #4caf50 !important;
+  box-shadow: 0 0 12px rgba(76,175,80,0.5) !important;
+  background: #e8f5e9 !important;
+}
+body .adj-slot.wrong {
+  border-color: #c41e3a !important;
+  box-shadow: 0 0 12px rgba(196,30,58,0.5) !important;
+  background: #fce4ec !important;
+}
+body .adj-noun-label { color: #1a2a5c !important; }
+
+/* === COMPARISON === */
+body .compare-image {
+  border-color: #4a6fa5 !important;
+  box-shadow: 0 6px 25px rgba(74, 111, 165, 0.3) !important;
+}
+body .compare-task {
+  background: #eef4ff !important;
+  border-left-color: #4a6fa5 !important;
+}
+
+/* === HOME === */
+body .home-cover { border-left-color: #8b1a1a !important; }
+body .home-intro { border-left-color: #8b1a1a !important; }
+body .home-intro p { color: #1a1a2e !important; }
+body .home-intro .intro-quote {
   background: linear-gradient(135deg, #eef4ff, #d4e4ff) !important;
   border-left-color: #4a6fa5 !important;
   color: #1a2a5c !important;
 }
+body .home-intro .intro-quote::before { color: #4a6fa5 !important; }
 
-/* ============ SPEAKING (Twilight) — НЕ ТРОГАЕМ ============ */
-#speaking .tw-body { background: inherit !important; }
-#speaking .check-btn { background: linear-gradient(135deg, #2a3a55 0%, #4a6fa5 100%) !important; }
-#speaking .fill-input { 
-  background: rgba(10, 18, 32, 0.6) !important; 
-  color: #e8eef8 !important; 
-  border-color: #7b9fd5 !important; 
+/* === INFO-STRIP (в Speaking) === */
+body .info-strip {
+  border-left-color: #c41e3a !important;
 }
+
+/* === SPEAKING (Twilight) — НЕ ТРОГАЕМ!!! === */
+body #speaking .tw-body { background: inherit !important; }
+body #speaking .fill-input {
+  background: rgba(10, 18, 32, 0.6) !important;
+  color: #e8eef8 !important;
+  border-color: #7b9fd5 !important;
+}
+body #speaking .exercise-item {
+  background: rgba(70, 90, 120, 0.5) !important;
+  color: #e8eef8 !important;
+}
+body #speaking .word-card {
+  background: rgba(70, 90, 120, 0.55) !important;
+  color: #e8eef8 !important;
+}
+body #speaking .word-card .en { color: #ffffff !important; }
+body #speaking .word-card .ru { color: #c8d4ec !important; }
+body #speaking .check-btn {
+  background: linear-gradient(135deg, #2a3a55 0%, #4a6fa5 100%) !important;
+  border-color: #8fa8cc !important;
+}
+body #speaking .section {
+  background: linear-gradient(135deg, rgba(55, 72, 100, 0.65) 0%, rgba(35, 48, 75, 0.75) 100%) !important;
+  border-left-color: #7b9fd5 !important;
+}
+body #speaking .section h2,
+body #speaking .section h3 { color: #e8eef8 !important; }
+body #speaking .section p,
+body #speaking .section li { color: #d8e2f0 !important; }
+body #speaking .tfns-item { background: rgba(70, 90, 120, 0.5) !important; }
+body #speaking .question-list li { background: rgba(70, 90, 120, 0.5) !important; color: #e8eef8 !important; }
+body #speaking .mono-card { background: linear-gradient(135deg, rgba(55, 72, 100, 0.6), rgba(35, 48, 75, 0.75)) !important; }
+body #speaking .mono-card h4 { color: #e8eef8 !important; }
+body #speaking .mono-card p,
+body #speaking .mono-card li { color: #d8e2f0 !important; }
+body #speaking .rule-block { background: rgba(55, 72, 100, 0.6) !important; }
+body #speaking .rule-block h3 { color: #e8eef8 !important; }
+body #speaking .role-card-rule { background: rgba(55, 72, 100, 0.6) !important; }
+body #speaking .rule-inner { background: rgba(35, 48, 75, 0.6) !important; }
+body #speaking .rule-inner p,
+body #speaking .rule-inner li { color: #d8e2f0 !important; }
+body #speaking .example { background: rgba(55, 72, 100, 0.5) !important; }
+body #speaking .example .en { color: #ffffff !important; }
+body #speaking .example .ru { color: #c8d4ec !important; }
 </style>
 </head>
 <body>
